@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = "this is a hexlet learning project"
+authors = ["Angekok <angekok@mail.ru>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2.7"
+
+[tool.poetry.dev-dependencies]
+gunicorn = "^20.1.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
