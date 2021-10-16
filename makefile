@@ -26,3 +26,6 @@ heroku-run:
 
 req-export:
 	poetry export -f requirements.txt --output requirements.txt
+
+heroku-log:
+	poetry run heroku logs --tail --app angekoks-task-manager
