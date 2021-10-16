@@ -23,3 +23,6 @@ test-run:
 
 heroku-run:
 	poetry run heroku local
+
+req-export:
+	poetry export -f requirements.txt --output requirements.txt
