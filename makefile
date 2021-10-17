@@ -19,7 +19,10 @@ test-coverage:
 	poetry run pytest --cov=page_loader --cov-report xml
 
 test-run:
-	poetry run python manage.py runserver
+	python3 -m poetry run ./manage.py runserver
+
+migration:
+	python3 -m poetry run ./manage.py makemigrations
 
 heroku-run:
 	poetry run heroku local
