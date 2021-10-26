@@ -142,3 +142,7 @@ LOGOUT_URL = reverse_lazy('logout')
 LOGIN_REDIRECT_URL='/'
 
 LOGOUT_REDIRECT_URL = '/login'
+
+if '/app' in os.environ['HOME']:
+    import django_heroku
+    django_heroku.settings(locals())
