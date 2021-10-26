@@ -51,6 +51,9 @@ psycopg2-binary==2.9.1; python_version >= "3.6" \
     --hash=sha256:3242b9619de955ab44581a03a64bdd7d5e470cc4183e8fcadd85ab9d3756ce7a \
     --hash=sha256:0b7dae87f0b729922e06f85f667de7bf16455d411971b2043bbd9577af9d1975 \
     --hash=sha256:b4d7679a08fea64573c969f6994a2631908bb2c0e69a7235648642f3d2e39a68
+python-dotenv==0.19.1; python_version >= "3.5" \
+    --hash=sha256:14f8185cc8d494662683e6914addcb7e95374771e707601dfc70166946b4c4b8 \
+    --hash=sha256:bbd3da593fc49c249397cbfbcc449cf36cb02e75afc8157fcc6a81df6fb7750a
 pytz==2021.3; python_version >= "3.6" \
     --hash=sha256:3672058bc3453457b622aab7a1c3bfd5ab0bdae451512f6cf25f64ed37f5b87c \
     --hash=sha256:acad2d8b20a1af07d4e4c9d2e9285c5ed9104354062f275f3fcd88dcef4f1326
