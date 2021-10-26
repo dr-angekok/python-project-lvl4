@@ -1,0 +1,16 @@
+    {% extends "base.html" %}
+    {% load bootstrap4 %}
+    {% load i18n %}
+    {% block content %}
+
+    <h1>{% trans "Delete Task Status" %}</h1>
+    
+    <p>{% trans "Are you sure you want to delete task status:" %} {{ status }}?</p>
+    
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input class="btn btn-primary" type="submit" action="" value='{% trans "Yes, delete." %}' />
+    </form>
+    
+    {% endblock %}
+  

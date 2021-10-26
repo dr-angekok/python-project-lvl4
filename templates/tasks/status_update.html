@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block content %}
+    <form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">{% trans "Update Status"%} </button>
+  {% endbuttons %}
+</form>
+{% endblock %}
+  
