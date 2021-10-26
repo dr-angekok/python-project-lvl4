@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block page_header %}<h1>{% trans "Log-out" %}</h1>{% endblock %}
+{% block content %}
+    <h1>{% trans "Logged out" %}</h1>
+    <p>{% trans "You have been successfully logged out. You can" %}<a href="{% url "login" %}">{% trans "log-in again" %}</a>.</p>
+{% endblock %}

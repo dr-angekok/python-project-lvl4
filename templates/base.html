@@ -1,11 +1,11 @@
 <!doctype html>
 <!-- Bootstrap core CSS -->
-{% load i18n %}
 {% load bootstrap4 %}
 {% load static %}
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
-<link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}">
+{% load i18n %}
+<link rel="favicon" type="image/png" href="{% static "favicon.png" %}">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -17,39 +17,48 @@
       <header>
         <div class="row pb-5">
           <div class="col">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-md">
               <a class="navbar-brand nav-link" href="/" >{% trans "Task manager" %}</a>
               <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
+                  {% if user.is_authenticated %}
                   <li class="nav-item">
-                    {% if user.is_authenticated %}
-                      <a class="nav-link" href="/">{% trans "Users" %}</a>
-                    {% endif %}
+                    <a class="nav-link" href="{% url 'users:list' %}">{% trans "Users" %}</a>
                   </li>
                   <li class="nav-item">
-                    {% if user.is_authenticated %}
-                      <a class="nav-link" href="/">{% trans "Tasks" %}</a>
-                    {% endif %}
+                    <a class="nav-link" href="/">{% trans "Tasks" %}</a>
                   </li>
                   <li class="nav-item">
-                    {% if user.is_authenticated %}
-                      <a class="nav-link" href="/">{% trans "Tags" %}</a>
-                    {% endif %}
+                    <a class="nav-link" href="/">{% trans "Tags" %}</a>
                   </li>
                   <li class="nav-item">
-                    {% if user.is_authenticated %}
-                      <a class="nav-link" href="/">{% trans "Log out" %}</a>
-                    {% endif %}
+                    <a class="nav-link" href="/logout">{% trans "logout" %}</a>
                   </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users:list' %}">{% trans "Users" %}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/create">{% trans "Register" %}</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">{% trans "Login" %}</a>
+                  </li>
+                  {% endif %}
                 </ul>
               </div>
             </nav>
           </div>
         </div>
+        <div class="container-fluid text-center">
+          <div class="p-3 mb-2 border border-primary float-none">
+            {% block page_header %}{% endblock page_header %}
+          </div>
+        </div> 
       </header>
       <main>
         <div class="container-fluid text-center">
-          <div class="p-3 mb-2 bg-dark text-white border border-primary float-none">
+          <div class="p-3 mb-2 border border-primary float-none">
               {% block content %}{% endblock %}
           </div>
         </div>

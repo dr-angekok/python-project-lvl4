@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_header %}
+  <h2>{% trans "User list" %}</h2>
+{% endblock page_header %}
+
+{% block content %}
+<table class="table table-hover mx-auto my-5">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">{% trans "username" %}</th>
+            <th scope="col">{% trans "fullname" %}</th>
+            <th scope="col">{% trans "creation_date" %}</th>
+            <th scope="col">{% trans "edit_buttons" %}</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td scope="row">{{ user.id }}</td>
+            <td scope="row">{{ user.username }}</td>
+            <td>{{ user.get_full_name }}</td>
+            <td>{{ user.date_joined }}</td>
+            <td>
+                <a href="{% url 'users:update' user.id %}">{% trans "update" %}</a>
+                <br>
+                <a href="{% url 'users:delete' user.id %}">{% trans "delete" %}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
