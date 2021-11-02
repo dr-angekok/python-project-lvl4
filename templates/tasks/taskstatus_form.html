@@ -1,25 +1,28 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% block page_header %}
+<h1>{% trans "Add Task Status" %}</h1>
+{% endblock %}
 {% block content %}
-    <form action="" method="post" class="form">
+  <form action="" method="post" class="form">
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}
     <button type="submit" class="btn btn-primary">{% trans "Add Status" %}</button>
   {% endbuttons %}
 </form>
-    <h3 class="cover-heading">{% trans "Task statuses:" %}</h3>
-    {% if statuses %}
-    {% for task_status in statuses %}
-    <div class="card bg-white text-dark mb-3">
-      <div class="card-header">
-        <div class="row">
-          <div class="col-md-6"><div class="text-left"><a href="{% url 'status' task_status.id %}">{{ task_status.name }}</a></div></div>
-          <div class="col-md-6"><div class="text-right"><a href="{% url 'status_update' task_status.id %}" class="badge badge-primary">{% trans "Edit" %}</a> <a href="{% url 'status_delete' task_status.id %}" class="badge badge-danger">{%trans "Delete" %}</a></div></div>
-        </div>
+  <h3 class="cover-heading">{% trans "Task statuses:" %}</h3>
+  {% if statuses %}
+  {% for task_status in statuses %}
+  <div class="card bg-white text-dark mb-3">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-md-6"><div class="text-left"><a href="{% url 'status' task_status.id %}">{{ task_status.name }}</a></div></div>
+        <div class="col-md-6"><div class="text-right"><a href="{% url 'status_update' task_status.id %}" class="badge badge-primary">{% trans "Edit" %}</a> <a href="{% url 'status_delete' task_status.id %}" class="badge badge-danger">{%trans "Delete" %}</a></div></div>
       </div>
     </div>
+  </div>
   {% endfor %}
   {% else %}
     <p>{% trans "You don't have any statuses."%} </p>

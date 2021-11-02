@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 {% load i18n %}
+
+{% block page_header %}
+  <h1>{% trans "Status info" %}</h1>
+{% endblock %}
+
 {% block content %}
       <div class="card bg-white text-dark mb-3">
         <div class="card-header">

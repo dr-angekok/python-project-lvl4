@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block page_header %}
+  <h1>{% trans "Task info" %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="card bg-white text-dark mb-3">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-6"><div class="text-left"><b><a href="{% url 'task' task.id %}">{{ task.name }}</a></b> 
+        <span class="badge badge-info">{{ task.status }}</span> 
+      </div></div>
+      <div class="col-md-6"><div class="text-right"><a href="{% url 'task_update' task.id %}" class="badge badge-primary">{% trans "Edit" %}</a> 
+        <a href="{% url 'task_delete' task.id %}" class="badge badge-danger">{% trans "Delete" %}</a></div></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="card-text text-left">{{task.content}}</p>
+  </div>
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-6"><div class="text-left"><span class="badge badge-info">
+        From {{ task.creator }} to {{ task.assigned_to }}
+      </span></div></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
