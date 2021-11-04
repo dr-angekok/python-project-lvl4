@@ -3,7 +3,8 @@
 {% load i18n %}
 
 {% block page_header %}
-  <h1>{% trans "Update Status" %}</h1>
+  <h1>{% trans "Update Status" %} 
+    <span class="badge badge-info">{{ taskstatus.name }}</span></h1>
 {% endblock %}
 
 {% block content %}
