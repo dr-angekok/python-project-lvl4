@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block page_header %}
+<h3 class="cover-heading">{% trans "Lables list:" %}</h3>
+{% endblock %}
+
+{% block content %}
+    {% if lables %}
+    {% for lable in lables %}
+    <div class="card bg-white text-dark mb-3">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6"><div class="text-left"><a href="{% url 'lable' lable.id %}">{{ lable.name }}</a></div></div>
+          <div class="col-md-6"><div class="text-right"><a href="{% url 'lable_update' lable.id %}" class="badge badge-primary">{% trans "Edit" %}</a> <a href="{% url 'lable_delete' lable.id %}" class="badge badge-danger">{%trans "Delete" %}</a></div></div>
+        </div>
+      </div>     
+    </div>
+  {% endfor %}
+  {% else %}
+    <p>{% trans "You don't have any lables. "%}</p>
+  {% endif %}  
+  <p class="card-text"><a href="{% url 'lable_create'%}">{% trans "Add new Lable"%}</a></p>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block page_header %}
+  <h1>{% trans "Update Lable " %}
+    <span class="badge badge-info">{{ tasklable.name }}</span>
+  </h1>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">{% trans "Update Lable"%} </button>
+  {% endbuttons %}
+</form>
+{% endblock %}
+  

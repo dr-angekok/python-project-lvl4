@@ -1,10 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from tasks.models import Task, TaskStatus
+from tasks.models import Task, TaskStatus, TaskLable
 
 
 class StatusesView(generic.ListView):
@@ -68,7 +67,6 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     def get_initial(self, *args, **kwargs):
         initial = super(TaskCreate, self).get_initial(**kwargs)
         initial['creator'] = self.request.user
-        initial['status'] = get_object_or_404(TaskStatus, name="New")
         return initial
 
 
@@ -81,3 +79,44 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('tasks')
+
+
+class LablesView(generic.ListView):
+    template_name = 'tasks/lables.html'
+    context_object_name = 'lables'
+
+    def get_queryset(self):
+        return TaskLable.objects.all()
+
+
+class LableView(generic.DetailView):
+    model = TaskLable
+    template_name = "tasks/lable.html"
+
+
+class LableCreate(LoginRequiredMixin, CreateView):
+    model = TaskLable
+    fields = '__all__'
+    success_url = reverse_lazy('lables')
+
+    def get_context_data(self, **kwargs):
+        context = super(LableCreate, self).get_context_data(**kwargs)
+        context['lables'] = TaskLable.objects.all()
+        return context
+
+
+class LableUpdate(LoginRequiredMixin, UpdateView):
+    model = TaskLable
+    fields = '__all__'
+    success_url = reverse_lazy('lables')
+    template_name = 'tasks/lable_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LableUpdate, self).get_context_data(**kwargs)
+        context['lables'] = TaskLable.objects.all()
+        return context
+
+
+class LableDelete(LoginRequiredMixin, DeleteView):
+    model = TaskLable
+    success_url = reverse_lazy('lables')
