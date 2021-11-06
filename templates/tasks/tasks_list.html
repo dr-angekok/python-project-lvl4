@@ -7,8 +7,23 @@
 {% endblock %}
 
 {% block content %}
+<div class="row">
+  <div class="col-md-3">
+    <h3>{% trans "Filters:" %}</h3>
+      <form action="" method="get" class="form">
+        {% bootstrap_form filter.form %}
+        <div class="form-check"><input type="checkbox" name="assigned_to__username" value={{ user.username }} class="form-check-input" id="id_self_tasks">
+          <label class="form-check-label" for="id_self_tasks">{% trans "Only your tasks" %}</label>
+        </div>
+        {% buttons %}
+          <button type="submit" class="btn btn-primary">{% trans "Filter" %}</button>
+        {% endbuttons %}
+      </form>
+  </div>
+</div>
+
 <div><a class="btn btn-outline-primary" href="/tasks/create" role="button">{% trans "Add new task" %}</a></div>
-<divclass="mx-auto">  </div>
+<div class="mx-auto">  </div>
 <div>
   <div>
     {% if tasks_list %}

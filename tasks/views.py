@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from tasks.filters import TaskFilter
 
 from tasks.models import Task, TaskStatus, TaskLable
 
@@ -42,7 +43,6 @@ class StatusDelete(LoginRequiredMixin, DeleteView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
 
-
 class TasksView(generic.ListView):
     model = Task
     template_name = 'tasks/tasks_list.html'
@@ -50,7 +50,20 @@ class TasksView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['filter'] = TaskFilter(
+            self.request.GET,
+            queryset=self.get_queryset(),)
         return context
+    
+    def get_queryset(self):
+        if self.request.GET:
+            parameters = self.request.GET
+            filters = {}
+            for key, value in parameters.items():
+                if value:
+                    filters[key] = value
+            return Task.objects.filter(**filters)
+        return Task.objects.all()
 
 
 class TaskView(generic.DetailView):
