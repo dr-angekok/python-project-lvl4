@@ -154,7 +154,7 @@ ROLLBAR = {
     'root': BASE_DIR,
 }
 import rollbar
-rollbar.init(**ROLLBAR)
+# rollbar.init(**ROLLBAR)
 
 if '/app' in os.environ['HOME']:
     import django_heroku
