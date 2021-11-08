@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -144,6 +145,16 @@ LOGOUT_URL = reverse_lazy('logout')
 LOGIN_REDIRECT_URL='/'
 
 LOGOUT_REDIRECT_URL = '/login'
+
+
+ROLLBAR_SECRET_KEY = os.environ.get('ROLLBAR_SECRET_KEY')
+ROLLBAR = {
+    'access_token': ROLLBAR_SECRET_KEY,
+    'environment': 'development' if DEBUG else 'production',
+    'root': BASE_DIR,
+}
+import rollbar
+rollbar.init(**ROLLBAR)
 
 if '/app' in os.environ['HOME']:
     import django_heroku
