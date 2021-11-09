@@ -78,11 +78,11 @@ msgstr "Залогинется назад"
 
 #: templates/registration/login.html:5 templates/registration/login.html:21
 msgid "Log-in"
-msgstr "Вход"
+msgstr "Войти"
 
 #: templates/registration/login.html:14
 msgid "Please, use the following form to log-in:"
-msgstr "Используйте этот вход."
+msgstr "Используйте форму для входа."
 
 #: templates/tasks/lable.html:6
 msgid "Lable info"
@@ -261,7 +261,7 @@ msgstr "Список пользователей"
 
 #: templates/users/list.html:13
 msgid "username"
-msgstr "никнейм"
+msgstr "Имя пользователя"
 
 #: templates/users/list.html:14
 msgid "fullname"
