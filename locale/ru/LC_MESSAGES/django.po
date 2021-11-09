@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-09 20:25+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: templates/base.html:12 templates/base.html:20
+msgid "Task manager"
+msgstr "Менеджер задач"
+
+#: templates/base.html:25 templates/base.html:41
+msgid "Users"
+msgstr "Пользователи"
+
+#: templates/base.html:28
+msgid "Tasks"
+msgstr "Задачи"
+
+#: templates/base.html:31
+msgid "Lables"
+msgstr "Метки"
+
+#: templates/base.html:34
+msgid "Statuses"
+msgstr "Статусы"
+
+#: templates/base.html:37
+msgid "logout"
+msgstr "Выход"
+
+#: templates/base.html:44
+msgid "Register"
+msgstr "Регистрация"
+
+#: templates/base.html:47
+msgid "Login"
+msgstr "Вход"
+
+#: templates/index.html:5
+msgid "Welcome to task manager"
+msgstr "Добро пожаловать в менеджер задач"
+
+#: templates/index.html:6
+msgid "Clicking head to views something"
+msgstr "Для просмотра содержимого нажмите вверху."
+
+#: templates/registration/logged_out.html:5
+msgid "Log-out"
+msgstr "Выход"
+
+#: templates/registration/logged_out.html:7
+msgid "Logged out"
+msgstr "Выходим"
+
+#: templates/registration/logged_out.html:8
+msgid "You have been successfully logged out. You can"
+msgstr "Вы успешно разлогинены."
+
+#: templates/registration/logged_out.html:8
+msgid "log-in again"
+msgstr "Залогинется назад"
+
+#: templates/registration/login.html:5 templates/registration/login.html:21
+msgid "Log-in"
+msgstr "Вход"
+
+#: templates/registration/login.html:14
+msgid "Please, use the following form to log-in:"
+msgstr "Используйте этот вход."
+
+#: templates/tasks/lable.html:6
+msgid "Lable info"
+msgstr "Содержимое метки"
+
+#: templates/tasks/lable.html:14 templates/tasks/lables.html:15
+#: templates/tasks/status.html:14 templates/tasks/status_form.html:24
+#: templates/tasks/statuses.html:14 templates/tasks/task.html:37
+#: templates/tasks/tasks_list.html:39 templates/tasks/taskstatus_form.html:22
+msgid "Edit"
+msgstr "Редактировать"
+
+#: templates/tasks/lable.html:14 templates/tasks/lables.html:15
+#: templates/tasks/status.html:14 templates/tasks/status_form.html:24
+#: templates/tasks/statuses.html:14 templates/tasks/task.html:38
+#: templates/tasks/tasks_list.html:40 templates/tasks/taskstatus_form.html:22
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/tasks/lable_update.html:6
+msgid "Update Lable "
+msgstr "Обновить метку"
+
+#: templates/tasks/lable_update.html:16
+msgid "Update Lable"
+msgstr "Обновить метку"
+
+#: templates/tasks/lables.html:5
+msgid "Lables list:"
+msgstr "Список меток"
+
+#: templates/tasks/lables.html:21
+msgid "You don't have any lables. "
+msgstr "У вас нет меток."
+
+#: templates/tasks/lables.html:23
+msgid "Add new Lable"
+msgstr "Добавить новую метку"
+
+#: templates/tasks/status.html:6 templates/tasks/status_form.html:6
+msgid "Status info"
+msgstr "Содержимое статуса"
+
+#: templates/tasks/status_form.html:14 templates/tasks/taskstatus_form.html:12
+msgid "Add Status"
+msgstr "Добавить статус"
+
+#: templates/tasks/status_form.html:17 templates/tasks/statuses.html:5
+#: templates/tasks/taskstatus_form.html:15
+msgid "Task statuses:"
+msgstr "Статусы задачь"
+
+#: templates/tasks/status_form.html:30
+msgid "You have't any statuses."
+msgstr "У вас нет статусов."
+
+#: templates/tasks/status_update.html:6 templates/tasks/status_update.html:15
+msgid "Update Status"
+msgstr "Обновить статус."
+
+#: templates/tasks/statuses.html:19
+msgid "New status"
+msgstr "Создать новый статус"
+
+#: templates/tasks/task.html:22 templates/tasks/task.html:31
+#: templates/tasks/tasks_list.html:51
+msgid "From "
+msgstr "от"
+
+#: templates/tasks/task.html:22 templates/tasks/task.html:31
+#: templates/tasks/tasks_list.html:51
+msgid " to "
+msgstr "к"
+
+#: templates/tasks/task.html:23
+msgid " gave the task "
+msgstr "дал задание"
+
+#: templates/tasks/task.html:34 templates/tasks/tasks_list.html:54
+msgid "Created at"
+msgstr "Дата создания"
+
+#: templates/tasks/task_confirm_delete.html:4
+msgid "Delete Task"
+msgstr "Удалить задачу"
+
+#: templates/tasks/task_confirm_delete.html:7
+msgid "Are you sure you want to delete the task: "
+msgstr "Вы уверены, что хотите удалить эту задачу:"
+
+#: templates/tasks/task_confirm_delete.html:10
+#: templates/tasks/tasklable_confirm_delete.html:12
+#: templates/tasks/taskstatus_confirm_delete.html:12
+msgid "Yes, delete."
+msgstr "Да, удалить"
+
+#: templates/tasks/task_form.html:5
+msgid "Adding Task"
+msgstr "Добавить задачу"
+
+#: templates/tasks/task_form.html:12 templates/tasks/tasklable_form.html:12
+msgid "Submit"
+msgstr ""
+
+#: templates/tasks/tasklable_confirm_delete.html:5
+msgid "Delete Task Lable"
+msgstr "Удалить метку задачи."
+
+#: templates/tasks/tasklable_confirm_delete.html:8
+msgid "Are you sure you want to delete lable: "
+msgstr "Вы уверены что хотите удалить метку:"
+
+#: templates/tasks/tasklable_form.html:5
+msgid "Adding Lable"
+msgstr "Добавить метку"
+
+#: templates/tasks/tasks_list.html:6
+msgid "Tasks list:"
+msgstr "Список задачь"
+
+#: templates/tasks/tasks_list.html:12
+msgid "Filters:"
+msgstr "Фильтры:"
+
+#: templates/tasks/tasks_list.html:16
+msgid "Only your tasks"
+msgstr "Только свои задачи"
+
+#: templates/tasks/tasks_list.html:19
+msgid "Filter"
+msgstr "Фильтровать"
+
+#: templates/tasks/tasks_list.html:25
+msgid "Add new task"
+msgstr "Добавить новую задачу"
+
+#: templates/tasks/tasks_list.html:62
+msgid "Have't any task."
+msgstr "Нет задачь"
+
+#: templates/tasks/taskstatus_confirm_delete.html:5
+msgid "Delete Task Status"
+msgstr "Удалить статус задачь"
+
+#: templates/tasks/taskstatus_confirm_delete.html:8
+msgid "Are you sure you want to delete task status: "
+msgstr "Вы уверены что хотите удалить статус: "
+
+#: templates/tasks/taskstatus_form.html:5
+msgid "Add Task Status"
+msgstr "Добавить статус задачь"
+
+#: templates/tasks/taskstatus_form.html:28
+msgid "You don't have any statuses."
+msgstr "У вас нет статусов"
+
+#: templates/users/create.html:7
+msgid "Create user"
+msgstr "Создать пользователя"
+
+#: templates/users/create.html:15
+msgid "register user"
+msgstr "Зарегистрация"
+
+#: templates/users/delete.html:6
+msgid "Delete account?"
+msgstr "Удалить учетную запись?"
+
+#: templates/users/delete.html:13 templates/users/list.html:30
+msgid "delete"
+msgstr "удалить"
+
+#: templates/users/list.html:5
+msgid "User list"
+msgstr "Список пользователей"
+
+#: templates/users/list.html:13
+msgid "username"
+msgstr "никнейм"
+
+#: templates/users/list.html:14
+msgid "fullname"
+msgstr "полное имя"
+
+#: templates/users/list.html:15
+msgid "creation_date"
+msgstr "дата создания"
+
+#: templates/users/list.html:16
+msgid "edit_buttons"
+msgstr "кнопка редактирования"
+
+#: templates/users/list.html:28
+msgid "update"
+msgstr "обновить"
+
+#: templates/users/update.html:5
+msgid "update_user_page"
+msgstr "обновить страницу пользователя"
+
+#~ msgid "English"
+#~ msgstr "Английский"
+
+#~ msgid "Russian"
+#~ msgstr "Русский"

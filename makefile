@@ -32,3 +32,9 @@ req-export:
 
 heroku-log:
 	poetry run heroku logs --tail --app angekoks-task-manager
+
+translate:
+	python3 -m poetry run python manage.py makemessages --locale=ru
+
+compil-translate:
+	python3 -m poetry run django-admin compilemessages
