@@ -3,14 +3,23 @@
 {% load i18n %}
 
 {% block page_header %}
+<div>{% if request.user.id == user.id%}
   <h2>{% trans "Delete account?" %} {{ user.username }}</h2>
+  {% else %}
+  {% endif %}
+</div>
 {% endblock page_header %}
 
 {% block content %}
+<div>{% if request.user.id == user.id%}
   <form method="post" action="{% url 'users:delete' user.id %}" class="form">
     {% csrf_token %}
     {% buttons %}
       <button name="submit" class="btn btn-primary">{% trans "delete" %}</button>
     {% endbuttons %}
   </form>
+    {% else %}
+      <p>{% trans "You do not have permission to delete another user." %}</p>
+    {% endif %}
+</div>
 {% endblock content %}

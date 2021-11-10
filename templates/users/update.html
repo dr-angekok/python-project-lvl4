@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
 {% load i18n %}
 
 {% block page_header %}
@@ -6,4 +7,16 @@
 {% endblock page_header %}
 
 {% block content %}
+<div>{% if request.user.id == object.id%}
+  <form action="" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button type="submit" class="btn btn-primary">{% trans "Update user"%} </button>
+  {% endbuttons %}
+  </form>
+  {% else %}
+    <p>{% trans "You do not have permission to modify another user." %}</p>
+  {% endif %}
+</div>
 {% endblock content %}

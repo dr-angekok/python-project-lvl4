@@ -4,10 +4,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views import View
+from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 
-class Create(View):
+class Create(View, SuccessMessageMixin):
     template_name = "users/create.html"
+    success_message = 'Успешно.'
 
     def get(self, request):
         return render(request, self.template_name, context={"form": UserCreationForm()})
@@ -21,24 +25,17 @@ class Create(View):
             return render(request, self.template_name, context={"form": form})
 
 
-class Update(LoginRequiredMixin, View):
-    login_url = "login"
-    template_name = "users/update.html"
-
-    def handle_no_permission(self):
-        return redirect(self.login_url)
-
-    def get(self, request, user_id):
-        context = {"username": User.objects.get(id=user_id).username}
-        return render(request, self.template_name, context=context)
+class Update(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
+    model = User
+    fields = ('username', 'first_name', 'last_name', 'password')
+    template_name = 'users/update.html'
+    success_url = "/users/"
+    success_message = 'Успешно отредактирован.'
 
 
 class Delete(LoginRequiredMixin, View):
     login_url = "login"
     template_name = "users/delete.html"
-
-    def handle_no_permission(self):
-        return redirect(self.login_url)
 
     def get(self, request, user_id):
         context = {"user": User.objects.get(id=user_id)}

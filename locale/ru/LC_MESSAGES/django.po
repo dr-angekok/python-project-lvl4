@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-09 20:25+0300\n"
+"POT-Creation-Date: 2021-11-10 22:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: task_manager/settings.py:132
+msgid "Russian"
+msgstr "Русский"
+
+#: task_manager/settings.py:133
+msgid "English"
+msgstr "Английский"
 
 #: templates/base.html:12 templates/base.html:20
 msgid "Task manager"
@@ -76,13 +84,13 @@ msgstr "Вы успешно разлогинены."
 msgid "log-in again"
 msgstr "Залогинется назад"
 
-#: templates/registration/login.html:5 templates/registration/login.html:21
+#: templates/registration/login.html:6
 msgid "Log-in"
 msgstr "Войти"
 
 #: templates/registration/login.html:14
-msgid "Please, use the following form to log-in:"
-msgstr "Используйте форму для входа."
+msgid "Log in"
+msgstr "Войти"
 
 #: templates/tasks/lable.html:6
 msgid "Lable info"
@@ -185,7 +193,7 @@ msgstr "Добавить задачу"
 
 #: templates/tasks/task_form.html:12 templates/tasks/tasklable_form.html:12
 msgid "Submit"
-msgstr ""
+msgstr "Передать"
 
 #: templates/tasks/tasklable_confirm_delete.html:5
 msgid "Delete Task Lable"
@@ -247,13 +255,17 @@ msgstr "Создать пользователя"
 msgid "register user"
 msgstr "Зарегистрация"
 
-#: templates/users/delete.html:6
+#: templates/users/delete.html:7
 msgid "Delete account?"
 msgstr "Удалить учетную запись?"
 
-#: templates/users/delete.html:13 templates/users/list.html:30
+#: templates/users/delete.html:18 templates/users/list.html:30
 msgid "delete"
 msgstr "удалить"
+
+#: templates/users/delete.html:22
+msgid "You do not have permission to delete another user."
+msgstr "У вас нет прав для удаления другого пользователя."
 
 #: templates/users/list.html:5
 msgid "User list"
@@ -279,12 +291,17 @@ msgstr "кнопка редактирования"
 msgid "update"
 msgstr "обновить"
 
-#: templates/users/update.html:5
+#: templates/users/update.html:6
 msgid "update_user_page"
 msgstr "обновить страницу пользователя"
 
-#~ msgid "English"
-#~ msgstr "Английский"
+#: templates/users/update.html:15
+msgid "Update user"
+msgstr "Редактировать пользователя."
 
-#~ msgid "Russian"
-#~ msgstr "Русский"
+#: templates/users/update.html:19
+msgid "You do not have permission to modify another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#~ msgid "Please, use the following form to log-in:"
+#~ msgstr "Используйте форму для входа."
