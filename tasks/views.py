@@ -1,10 +1,13 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from tasks.filters import TaskFilter
 
-from tasks.models import Task, TaskStatus, TaskLable
+from tasks.filters import TaskFilter
+from tasks.models import Task, TaskLable, TaskStatus
 
 
 class StatusesView(generic.ListView):
@@ -54,7 +57,7 @@ class TasksView(generic.ListView):
             self.request.GET,
             queryset=self.get_queryset(),)
         return context
-    
+
     def get_queryset(self):
         if self.request.GET:
             parameters = self.request.GET
@@ -95,6 +98,13 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('tasks')
+
+    def get(self, request, pk):
+        task = Task.objects.filter(pk=pk)
+        if not task.filter(creator__id=request.user.id):
+            messages.info(request, _('You do not have permission to delet another user task.'))
+            return HttpResponseRedirect(self.success_url)
+        return super().get(request, pk)
 
 
 class LablesView(generic.ListView):
