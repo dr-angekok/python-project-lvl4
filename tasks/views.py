@@ -74,13 +74,17 @@ class TaskView(generic.DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = '__all__'
+    fields = ('name', 'content', 'assigned_to', 'status', 'lables')
     success_url = reverse_lazy('tasks')
 
     def get_initial(self, *args, **kwargs):
         initial = super(TaskCreate, self).get_initial(**kwargs)
         initial['creator'] = self.request.user
         return initial
+    
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super(TaskCreate, self).form_valid(form)
 
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
