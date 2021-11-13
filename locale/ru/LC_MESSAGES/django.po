@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-10 22:44+0300\n"
+"POT-Creation-Date: 2021-11-13 12:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,45 +28,45 @@ msgstr "Русский"
 msgid "English"
 msgstr "Английский"
 
-#: templates/base.html:12 templates/base.html:20
+#: templates/base.html:12 templates/base.html:32
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:25 templates/base.html:41
+#: templates/base.html:37 templates/base.html:53
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:28
+#: templates/base.html:40
 msgid "Tasks"
 msgstr "Задачи"
 
-#: templates/base.html:31
+#: templates/base.html:43
 msgid "Lables"
 msgstr "Метки"
 
-#: templates/base.html:34
+#: templates/base.html:46
 msgid "Statuses"
 msgstr "Статусы"
 
-#: templates/base.html:37
+#: templates/base.html:49
 msgid "logout"
 msgstr "Выход"
 
-#: templates/base.html:44
+#: templates/base.html:56
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/base.html:47
+#: templates/base.html:59
 msgid "Login"
 msgstr "Вход"
 
 #: templates/index.html:5
-msgid "Welcome to task manager"
+msgid "Welcome to the task manager"
 msgstr "Добро пожаловать в менеджер задач"
 
 #: templates/index.html:6
-msgid "Clicking head to views something"
-msgstr "Для просмотра содержимого нажмите вверху."
+msgid "Click the top menu to view something"
+msgstr "Для просмотра содержимого нажмите меню."
 
 #: templates/registration/logged_out.html:5
 msgid "Log-out"
@@ -100,6 +100,7 @@ msgstr "Содержимое метки"
 #: templates/tasks/status.html:14 templates/tasks/status_form.html:24
 #: templates/tasks/statuses.html:14 templates/tasks/task.html:37
 #: templates/tasks/tasks_list.html:39 templates/tasks/taskstatus_form.html:22
+#: templates/users/list.html:16
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -141,7 +142,7 @@ msgstr "Добавить статус"
 #: templates/tasks/status_form.html:17 templates/tasks/statuses.html:5
 #: templates/tasks/taskstatus_form.html:15
 msgid "Task statuses:"
-msgstr "Статусы задачь"
+msgstr "Статусы задач"
 
 #: templates/tasks/status_form.html:30
 msgid "You have't any statuses."
@@ -209,7 +210,7 @@ msgstr "Добавить метку"
 
 #: templates/tasks/tasks_list.html:6
 msgid "Tasks list:"
-msgstr "Список задачь"
+msgstr "Список задач"
 
 #: templates/tasks/tasks_list.html:12
 msgid "Filters:"
@@ -241,7 +242,7 @@ msgstr "Вы уверены что хотите удалить статус: "
 
 #: templates/tasks/taskstatus_form.html:5
 msgid "Add Task Status"
-msgstr "Добавить статус задачь"
+msgstr "Добавить статус задач"
 
 #: templates/tasks/taskstatus_form.html:28
 msgid "You don't have any statuses."
@@ -272,20 +273,16 @@ msgid "User list"
 msgstr "Список пользователей"
 
 #: templates/users/list.html:13
-msgid "username"
+msgid "Username"
 msgstr "Имя пользователя"
 
 #: templates/users/list.html:14
-msgid "fullname"
-msgstr "полное имя"
+msgid "Full Name"
+msgstr "Полное имя"
 
 #: templates/users/list.html:15
-msgid "creation_date"
-msgstr "дата создания"
-
-#: templates/users/list.html:16
-msgid "edit_buttons"
-msgstr "кнопка редактирования"
+msgid "Creation Date"
+msgstr "Дата создания"
 
 #: templates/users/list.html:28
 msgid "update"
@@ -302,6 +299,3 @@ msgstr "Редактировать пользователя."
 #: templates/users/update.html:19
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
-
-#~ msgid "Please, use the following form to log-in:"
-#~ msgstr "Используйте форму для входа."

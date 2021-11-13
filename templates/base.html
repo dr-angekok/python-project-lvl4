@@ -10,6 +10,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{% trans "Task manager" %}{% endblock %}</title>
+      {% if messages %}
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+        <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+      {% endif %}
   </head>
   <body>
     <div class="container-fluid">
