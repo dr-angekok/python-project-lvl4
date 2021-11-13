@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-13 12:27+0300\n"
+"POT-Creation-Date: 2021-11-13 14:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,7 +159,7 @@ msgstr "Создать новый статус"
 #: templates/tasks/task.html:22 templates/tasks/task.html:31
 #: templates/tasks/tasks_list.html:51
 msgid "From "
-msgstr "от"
+msgstr "Задание от"
 
 #: templates/tasks/task.html:22 templates/tasks/task.html:31
 #: templates/tasks/tasks_list.html:51
@@ -190,7 +190,7 @@ msgstr "Да, удалить"
 
 #: templates/tasks/task_form.html:5
 msgid "Adding Task"
-msgstr "Добавить задачу"
+msgstr "Редактирование задачи"
 
 #: templates/tasks/task_form.html:12 templates/tasks/tasklable_form.html:12
 msgid "Submit"
@@ -296,6 +296,6 @@ msgstr "обновить страницу пользователя"
 msgid "Update user"
 msgstr "Редактировать пользователя."
 
-#: templates/users/update.html:19
+#: templates/users/update.html:20
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
