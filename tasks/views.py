@@ -81,7 +81,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
         initial = super(TaskCreate, self).get_initial(**kwargs)
         initial['creator'] = self.request.user
         return initial
-    
+
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super(TaskCreate, self).form_valid(form)

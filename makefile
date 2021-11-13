@@ -23,6 +23,7 @@ test-run:
 
 migration:
 	python3 -m poetry run python manage.py makemigrations
+	python3 -m poetry run python manage.py migrate
 
 heroku-run:
 	poetry run heroku local
