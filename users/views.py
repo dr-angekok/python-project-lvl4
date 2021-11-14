@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.auth.signals import user_logged_in
 from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import View
 from django.views.generic.edit import UpdateView
@@ -63,3 +63,8 @@ class List(View):
         context = {'users': users}
         return render(request, self.template_name, context=context)
 
+
+def logged_in_message(sender, user, request, **kwargs):
+    messages.info(request, _('You are now logged in.'))
+
+user_logged_in.connect(logged_in_message)
