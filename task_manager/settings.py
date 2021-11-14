@@ -152,7 +152,7 @@ LOGOUT_URL = reverse_lazy('logout')
 
 LOGIN_REDIRECT_URL='/'
 
-LOGOUT_REDIRECT_URL = '/login'
+LOGOUT_REDIRECT_URL = '/'
 
 
 ROLLBAR_SECRET_KEY = os.environ.get('ROLLBAR_SECRET_KEY')
