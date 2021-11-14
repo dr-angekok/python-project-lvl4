@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext as _
 from django.views import View
@@ -67,4 +67,9 @@ class List(View):
 def logged_in_message(sender, user, request, **kwargs):
     messages.info(request, _('You are now logged in.'))
 
+
+def logged_out_message(sender, user, request, **kwargs):
+    messages.info(request, _('You are now logged out.'))
+
 user_logged_in.connect(logged_in_message)
+user_logged_out.connect(logged_out_message)
