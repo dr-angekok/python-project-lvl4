@@ -1,39 +1,43 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext as _
 from django.views import View
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, CreateView
+from .forms import UpdateUserForm, CustomUserCreationForm
 
-
-class Create(View):
+class Create(CreateView):
     template_name = 'users/create.html'
 
     def get(self, request):
-        return render(request, self.template_name, context={'form': UserCreationForm()})
+        return render(request, self.template_name, context={'form': CustomUserCreationForm()})
 
     def post(self, request):
-        form = UserCreationForm(data=request.POST)
+        form = CustomUserCreationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            messages.info(request, _('You are now logged in.'))
             new_user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password1'])
             login(request, new_user)
             return redirect("/")
         else:
-            return render(request, self.template_name, context={'form': form})
+            return render(request, self.template_name, context={'form': CustomUserCreationForm()})
 
 
 class Update(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ('username', 'first_name', 'last_name', 'password')
     template_name = 'users/update.html'
-    success_url = '/users/'
+
+    def get(self, request, pk, *args, **kwargs):
+        if request.user.id is not pk:
+            messages.info(request, _('You do not have permission to modify another user.'))
+            return redirect('/users')
+        else:
+            return render(request, self.template_name, context={'form': UpdateUserForm,})
 
 
 class Delete(LoginRequiredMixin, View):
