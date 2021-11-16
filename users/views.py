@@ -20,10 +20,8 @@ class Create(CreateView):
         form = CustomUserCreationForm(data=request.POST)
         if form.is_valid():
             form.save()
-            new_user = authenticate(username=form.cleaned_data['username'],
-                                    password=form.cleaned_data['password1'])
-            login(request, new_user)
-            return redirect("/")
+            messages.info(request, _('User registered successfully'))
+            return redirect("/login")
         else:
             return render(request, self.template_name, context={'form': CustomUserCreationForm()})
 
