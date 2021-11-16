@@ -31,13 +31,20 @@ class Create(CreateView):
 class Update(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
-
-    def get(self, request, pk, *args, **kwargs):
+    form_class = UpdateUserForm
+    
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return redirect('/users')
+ 
+    def dispatch(self, request, pk, *args, **kwargs):
         if request.user.id is not pk:
             messages.info(request, _('You do not have permission to modify another user.'))
             return redirect('/users')
         else:
-            return render(request, self.template_name, context={'form': UpdateUserForm,})
+            return super().dispatch(request, *args, **kwargs)
 
 
 class Delete(LoginRequiredMixin, View):
