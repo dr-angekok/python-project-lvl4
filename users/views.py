@@ -22,8 +22,7 @@ class Create(CreateView):
             form.save()
             messages.info(request, _('User registered successfully'))
             return redirect("/login")
-        else:
-            return render(request, self.template_name, context={'form': CustomUserCreationForm()})
+        return render(request, self.template_name, context={'form': CustomUserCreationForm()})
 
 
 class Update(LoginRequiredMixin, UpdateView):
@@ -45,8 +44,7 @@ class Update(LoginRequiredMixin, UpdateView):
                 return redirect('/users')
             messages.info(request, _('You are not authorized! Please sign in.'))
             return redirect('/login')
-        else:
-            return super().dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
 
 class Delete(LoginRequiredMixin, View):
@@ -70,8 +68,7 @@ class Delete(LoginRequiredMixin, View):
                 return redirect('/users')
             messages.info(request, _('You are not authorized! Please sign in.'))
             return redirect('/login')
-        else:
-            return super().dispatch(request, user_id, *args, **kwargs)
+        return super().dispatch(request, user_id, *args, **kwargs)
 
 
 class List(View):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-17 20:29+0300\n"
+"POT-Creation-Date: 2021-11-17 20:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,9 +264,9 @@ msgstr "Зарегистрировать"
 msgid "Delete account?"
 msgstr "Удалить учетную запись?"
 
-#: templates/users/delete.html:16 templates/users/list.html:30
-msgid "delete"
-msgstr "Удалить"
+#: templates/users/delete.html:16
+msgid "Yes, delete"
+msgstr "Да, удалить"
 
 #: templates/users/list.html:5
 msgid "User list"
@@ -288,6 +288,10 @@ msgstr "Дата создания"
 msgid "Change"
 msgstr "Изменить"
 
+#: templates/users/list.html:30
+msgid "delete"
+msgstr "Удалить"
+
 #: templates/users/update.html:6
 msgid "update_user_page"
 msgstr "обновить страницу пользователя"
@@ -300,26 +304,26 @@ msgstr "Изменить"
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:38
+#: users/views.py:37
 msgid "User edited successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:44 users/views.py:69
+#: users/views.py:43 users/views.py:67
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: users/views.py:46 users/views.py:71
+#: users/views.py:45 users/views.py:69
 msgid "You are not authorized! Please sign in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:63
+#: users/views.py:61
 msgid "Successfully delete."
 msgstr "Успешно удалено"
 
-#: users/views.py:87
+#: users/views.py:84
 msgid "You are now logged in."
 msgstr "Вы залогинены"
 
-#: users/views.py:91
+#: users/views.py:88
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
