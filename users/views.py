@@ -30,17 +30,21 @@ class Update(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     form_class = UpdateUserForm
-    
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
+        messages.info(self.request, _('User edited successfully'))
         return redirect('/users')
  
     def dispatch(self, request, pk, *args, **kwargs):
         if request.user.id is not pk:
-            messages.info(request, _('You do not have permission to modify another user.'))
-            return redirect('/users')
+            if request.user.is_authenticated:
+                messages.info(request, _('You do not have permission to modify another user.'))
+                return redirect('/users')
+            messages.info(request, _('You are not authorized! Please sign in.'))
+            return redirect('/login')
         else:
             return super().dispatch(request, *args, **kwargs)
 
@@ -51,17 +55,23 @@ class Delete(LoginRequiredMixin, View):
 
     def get(self, request, user_id):
         context = {'user': User.objects.get(id=user_id)}
-        if request.user.id is not user_id:
-            messages.info(request, _('You do not have permission to modify another user.'))
-            return redirect('/users')
-        else:
-            return render(request, self.template_name, context=context)
+        return render(request, self.template_name, context=context)
 
     def post(self, request, user_id):
         user = User.objects.get(id=user_id)
         user.delete()
         messages.info(request, _('Successfully delete.'))
         return redirect('/')
+    
+    def dispatch(self, request, user_id, *args, **kwargs):
+        if request.user.id is not user_id:
+            if request.user.is_authenticated:
+                messages.info(request, _('You do not have permission to modify another user.'))
+                return redirect('/users')
+            messages.info(request, _('You are not authorized! Please sign in.'))
+            return redirect('/login')
+        else:
+            return super().dispatch(request, user_id, *args, **kwargs)
 
 
 class List(View):
