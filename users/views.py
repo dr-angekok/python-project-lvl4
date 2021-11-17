@@ -22,7 +22,7 @@ class Create(CreateView):
             form.save()
             messages.info(request, _('User registered successfully'))
             return redirect("/login")
-        return render(request, self.template_name, context={'form': CustomUserCreationForm()})
+        return render(request, self.template_name, context={'form': CustomUserCreationForm(data=request.POST)})
 
 
 class Update(LoginRequiredMixin, UpdateView):
