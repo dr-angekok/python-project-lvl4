@@ -59,7 +59,7 @@ class Delete(LoginRequiredMixin, View):
         user = User.objects.get(id=user_id)
         user.delete()
         messages.info(request, _('Successfully delete.'))
-        return redirect('/')
+        return redirect('/users')
     
     def dispatch(self, request, user_id, *args, **kwargs):
         if request.user.id is not user_id:

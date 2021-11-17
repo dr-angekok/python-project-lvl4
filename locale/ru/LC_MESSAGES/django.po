@@ -318,7 +318,7 @@ msgstr "Вы не авторизованы! Пожалуйста, выполни
 
 #: users/views.py:61
 msgid "Successfully delete."
-msgstr "Успешно удалено"
+msgstr "Пользователь успешно удалён"
 
 #: users/views.py:84
 msgid "You are now logged in."
@@ -327,3 +327,5 @@ msgstr "Вы залогинены"
 #: users/views.py:88
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
+
+#: Невозможно удалить пользователя, потому что он используется
