@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-16 23:10+0300\n"
+"POT-Creation-Date: 2021-11-17 19:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,7 +266,7 @@ msgstr "Удалить учетную запись?"
 
 #: templates/users/delete.html:16 templates/users/list.html:30
 msgid "delete"
-msgstr "удалить"
+msgstr "Удалить"
 
 #: templates/users/list.html:5
 msgid "User list"
@@ -285,8 +285,8 @@ msgid "Creation Date"
 msgstr "Дата создания"
 
 #: templates/users/list.html:28
-msgid "update"
-msgstr "обновить"
+msgid "Change"
+msgstr "Изменить"
 
 #: templates/users/update.html:6
 msgid "update_user_page"
