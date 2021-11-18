@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 20:56+0300\n"
+"POT-Creation-Date: 2021-11-18 21:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,9 +44,45 @@ msgstr "Метка"
 msgid "Name"
 msgstr "Имя"
 
-#: tasks/views.py:106
+#: tasks/views.py:30
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
+
+#: tasks/views.py:42
+msgid "Status successfully updated"
+msgstr "Статус успешно изменён"
+
+#: tasks/views.py:52
+msgid "Status successfully deleted"
+msgstr "Статус успешно удалён"
+
+#: tasks/views.py:87
+msgid "Task successfully Created"
+msgstr "Задача успешно создана"
+
+#: tasks/views.py:98
+msgid "Task successfully updated"
+msgstr "Задача успешно изменёна"
+
+#: tasks/views.py:108
+msgid "Task successfully deleted"
+msgstr "Задача успешно удалёна"
+
+#: tasks/views.py:113
 msgid "You do not have permission to delet another user task."
 msgstr "У вас нет прав для удаления задачи другого пользователя."
+
+#: tasks/views.py:135
+msgid "Lable successfully Created"
+msgstr "Метка успешно создана"
+
+#: tasks/views.py:148
+msgid "Lable successfully updated"
+msgstr "Метка успешно изменена"
+
+#: tasks/views.py:159
+msgid "Lable successfully deleted"
+msgstr "Метка успешно удалена"
 
 #: templates/base.html:12 templates/base.html:32
 msgid "Task manager"
@@ -343,3 +379,8 @@ msgstr "Вы залогинены"
 #: users/views.py:92
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
+
+#, fuzzy
+#~| msgid "Status successfully created"
+#~ msgid "Nask successfully Created"
+#~ msgstr "Статус успешно создан"

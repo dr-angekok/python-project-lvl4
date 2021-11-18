@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
@@ -7,8 +8,8 @@ from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from tasks.filters import TaskFilter
+from tasks.forms import LableForm, StatusForm
 from tasks.models import Task, TaskLable, TaskStatus
-from tasks.forms import StatusForm, LableForm
 
 
 class StatusesView(generic.ListView):
@@ -22,30 +23,33 @@ class StatusView(generic.DetailView):
     model = TaskStatus
     template_name = "tasks/status.html"
 
-class StatusCreate(LoginRequiredMixin, CreateView):
+class StatusCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
     form_class = StatusForm
+    success_message = _("Status successfully created")
 
     def get_context_data(self, **kwargs):
         context = super(StatusCreate, self).get_context_data(**kwargs)
         context['statuses'] = TaskStatus.objects.all()
         return context
 
-class StatusUpdate(LoginRequiredMixin, UpdateView):
+class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
     template_name = 'tasks/status_update.html'
     form_class = StatusForm
+    success_message = _("Status successfully updated")
 
     def get_context_data(self, **kwargs):
         context = super(StatusUpdate, self).get_context_data(**kwargs)
         context['statuses'] = TaskStatus.objects.all()
         return context
 
-class StatusDelete(LoginRequiredMixin, DeleteView):
+class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
+    success_message = _("Status successfully deleted")
 
 class TasksView(generic.ListView):
     model = Task
@@ -76,29 +80,32 @@ class TaskView(generic.DetailView):
     success_url = reverse_lazy('tasks')
 
 
-class TaskCreate(LoginRequiredMixin, CreateView):
+class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
     fields = ('name', 'content', 'assigned_to', 'status', 'lables')
     success_url = reverse_lazy('tasks')
+    success_message = _("Task successfully Created")
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super(TaskCreate, self).form_valid(form)
 
 
-class TaskUpdate(LoginRequiredMixin, UpdateView):
+class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
     fields = ('name', 'content', 'assigned_to', 'status', 'lables')
     success_url = reverse_lazy('tasks')
+    success_message = _("Task successfully updated")
     
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super(TaskUpdate, self).form_valid(form)
 
 
-class TaskDelete(LoginRequiredMixin, DeleteView):
+class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('tasks')
+    success_message = _("Task successfully deleted")
 
     def get(self, request, pk):
         task = Task.objects.filter(pk=pk)
@@ -121,10 +128,11 @@ class LableView(generic.DetailView):
     template_name = "tasks/lable.html"
 
 
-class LableCreate(LoginRequiredMixin, CreateView):
+class LableCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = TaskLable
     form_class = LableForm
     success_url = reverse_lazy('lables')
+    success_message = _("Lable successfully Created")
 
     def get_context_data(self, **kwargs):
         context = super(LableCreate, self).get_context_data(**kwargs)
@@ -132,11 +140,12 @@ class LableCreate(LoginRequiredMixin, CreateView):
         return context
 
 
-class LableUpdate(LoginRequiredMixin, UpdateView):
+class LableUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = TaskLable
     form_class = LableForm
     success_url = reverse_lazy('lables')
     template_name = 'tasks/lable_update.html'
+    success_message = _("Lable successfully updated")
 
     def get_context_data(self, **kwargs):
         context = super(LableUpdate, self).get_context_data(**kwargs)
@@ -144,6 +153,7 @@ class LableUpdate(LoginRequiredMixin, UpdateView):
         return context
 
 
-class LableDelete(LoginRequiredMixin, DeleteView):
+class LableDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TaskLable
     success_url = reverse_lazy('lables')
+    success_message = _("Lable successfully deleted")
