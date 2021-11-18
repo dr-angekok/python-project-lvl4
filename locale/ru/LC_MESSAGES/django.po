@@ -150,7 +150,7 @@ msgstr "Обновить статус."
 
 #: templates/tasks/statuses.html:19
 msgid "New status"
-msgstr "Создать новый статус"
+msgstr "Создать статус"
 
 #: templates/tasks/task.html:22 templates/tasks/task.html:31
 #: templates/tasks/tasks_list.html:51
