@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-17 20:42+0300\n"
+"POT-Creation-Date: 2021-11-18 19:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,14 +87,6 @@ msgstr "Вы успешно разлогинены."
 #: templates/registration/logged_out.html:8
 msgid "log-in again"
 msgstr "Залогинется назад"
-
-#: templates/registration/login.html:6
-msgid "Log-in"
-msgstr "Вход"
-
-#: templates/registration/login.html:14
-msgid "Log in"
-msgstr "Войти"
 
 #: templates/tasks/lable.html:6
 msgid "Lable info"
@@ -292,6 +284,14 @@ msgstr "Изменить"
 msgid "delete"
 msgstr "Удалить"
 
+#: templates/users/login.html:6
+msgid "Log-in"
+msgstr "Вход"
+
+#: templates/users/login.html:14
+msgid "Log in"
+msgstr "Войти"
+
 #: templates/users/update.html:6
 msgid "update_user_page"
 msgstr "обновить страницу пользователя"
@@ -300,32 +300,30 @@ msgstr "обновить страницу пользователя"
 msgid "Update user"
 msgstr "Изменить"
 
-#: users/views.py:23
+#: users/views.py:25
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:37
+#: users/views.py:39
 msgid "User edited successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:43 users/views.py:67
+#: users/views.py:45 users/views.py:69
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: users/views.py:45 users/views.py:69
+#: users/views.py:47 users/views.py:71
 msgid "You are not authorized! Please sign in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:61
+#: users/views.py:63
 msgid "Successfully delete."
 msgstr "Пользователь успешно удалён"
 
-#: users/views.py:84
+#: users/views.py:88
 msgid "You are now logged in."
 msgstr "Вы залогинены"
 
-#: users/views.py:88
+#: users/views.py:92
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
-
-#: Невозможно удалить пользователя, потому что он используется

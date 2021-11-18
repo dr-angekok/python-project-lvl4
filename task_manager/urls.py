@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from users.views import LoginFormView
 
 from task_manager.views import index
 
@@ -22,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('users/', include('users.urls')),
+    path("login/", LoginFormView.as_view(), name="login"),
     path('', include('django.contrib.auth.urls')),
-    path('', include('tasks.urls'))
+    path('', include('tasks.urls')),
 ]
