@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from tasks.filters import TaskFilter
 from tasks.models import Task, TaskLable, TaskStatus
+from tasks.forms import StatusForm, LableForm
 
 
 class StatusesView(generic.ListView):
@@ -23,8 +24,8 @@ class StatusView(generic.DetailView):
 
 class StatusCreate(LoginRequiredMixin, CreateView):
     model = TaskStatus
-    fields = '__all__'
     success_url = reverse_lazy('statuses')
+    form_class = StatusForm
 
     def get_context_data(self, **kwargs):
         context = super(StatusCreate, self).get_context_data(**kwargs)
@@ -33,9 +34,9 @@ class StatusCreate(LoginRequiredMixin, CreateView):
 
 class StatusUpdate(LoginRequiredMixin, UpdateView):
     model = TaskStatus
-    fields = '__all__'
     success_url = reverse_lazy('statuses')
     template_name = 'tasks/status_update.html'
+    form_class = StatusForm
 
     def get_context_data(self, **kwargs):
         context = super(StatusUpdate, self).get_context_data(**kwargs)
@@ -122,7 +123,7 @@ class LableView(generic.DetailView):
 
 class LableCreate(LoginRequiredMixin, CreateView):
     model = TaskLable
-    fields = '__all__'
+    form_class = LableForm
     success_url = reverse_lazy('lables')
 
     def get_context_data(self, **kwargs):
@@ -133,7 +134,7 @@ class LableCreate(LoginRequiredMixin, CreateView):
 
 class LableUpdate(LoginRequiredMixin, UpdateView):
     model = TaskLable
-    fields = '__all__'
+    form_class = LableForm
     success_url = reverse_lazy('lables')
     template_name = 'tasks/lable_update.html'
 

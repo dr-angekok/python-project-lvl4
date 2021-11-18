@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 19:15+0300\n"
+"POT-Creation-Date: 2021-11-18 20:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,23 @@ msgstr "Русский"
 msgid "English"
 msgstr "Английский"
 
-#: tasks/views.py:105
+#: tasks/filters.py:11
+msgid "Status"
+msgstr "Статус"
+
+#: tasks/filters.py:12
+msgid "Assigned to"
+msgstr "Исполнитель"
+
+#: tasks/filters.py:13
+msgid "Lable"
+msgstr "Метка"
+
+#: tasks/forms.py:11 tasks/forms.py:18
+msgid "Name"
+msgstr "Имя"
+
+#: tasks/views.py:106
 msgid "You do not have permission to delet another user task."
 msgstr "У вас нет прав для удаления задачи другого пользователя."
 
@@ -98,7 +114,7 @@ msgstr "Содержимое метки"
 #: templates/tasks/tasks_list.html:39 templates/tasks/taskstatus_form.html:22
 #: templates/users/list.html:16
 msgid "Edit"
-msgstr "Редактировать"
+msgstr "Изменить"
 
 #: templates/tasks/lable.html:14 templates/tasks/lables.html:15
 #: templates/tasks/status.html:14 templates/tasks/status_form.html:24
@@ -109,11 +125,11 @@ msgstr "Удалить"
 
 #: templates/tasks/lable_update.html:6
 msgid "Update Lable "
-msgstr "Обновить метку"
+msgstr "Изменение метки "
 
 #: templates/tasks/lable_update.html:16
 msgid "Update Lable"
-msgstr "Обновить метку"
+msgstr "Изменить"
 
 #: templates/tasks/lables.html:5
 msgid "Lables list:"
@@ -125,7 +141,7 @@ msgstr "У вас нет меток."
 
 #: templates/tasks/lables.html:23
 msgid "Add new Lable"
-msgstr "Добавить новую метку"
+msgstr "Создать метку"
 
 #: templates/tasks/status.html:6 templates/tasks/status_form.html:6
 msgid "Status info"
@@ -133,7 +149,7 @@ msgstr "Содержимое статуса"
 
 #: templates/tasks/status_form.html:14 templates/tasks/taskstatus_form.html:12
 msgid "Add Status"
-msgstr "Добавить статус"
+msgstr "Создать"
 
 #: templates/tasks/status_form.html:17 templates/tasks/statuses.html:5
 #: templates/tasks/taskstatus_form.html:15
@@ -146,7 +162,7 @@ msgstr "У вас нет статусов."
 
 #: templates/tasks/status_update.html:6 templates/tasks/status_update.html:15
 msgid "Update Status"
-msgstr "Обновить статус."
+msgstr "Изменить"
 
 #: templates/tasks/statuses.html:19
 msgid "New status"
@@ -190,7 +206,7 @@ msgstr "Редактирование задачи"
 
 #: templates/tasks/task_form.html:12 templates/tasks/tasklable_form.html:12
 msgid "Submit"
-msgstr "Передать"
+msgstr "Создать"
 
 #: templates/tasks/tasklable_confirm_delete.html:5
 msgid "Delete Task Lable"
@@ -218,11 +234,11 @@ msgstr "Только свои задачи"
 
 #: templates/tasks/tasks_list.html:19
 msgid "Filter"
-msgstr "Фильтровать"
+msgstr "Показать"
 
 #: templates/tasks/tasks_list.html:25
 msgid "Add new task"
-msgstr "Добавить новую задачу"
+msgstr "Создать задачу"
 
 #: templates/tasks/tasks_list.html:62
 msgid "Have't any task."
