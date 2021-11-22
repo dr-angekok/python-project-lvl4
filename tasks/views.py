@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
@@ -50,6 +51,12 @@ class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
     success_message = _("Status successfully deleted")
+
+    def dispatch(self, request, pk, *args, **kwargs):
+        if Task.objects.filter(status__id=pk):
+            messages.info(request, _('Unable to delete status because it is in use'))
+            return redirect('/statuses')
+        return super().dispatch(request, pk, *args, **kwargs)
 
 class TasksView(generic.ListView):
     model = Task
@@ -157,3 +164,10 @@ class LableDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TaskLable
     success_url = reverse_lazy('lables')
     success_message = _("Lable successfully deleted")
+    
+    def dispatch(self, request, pk, *args, **kwargs):
+        if Task.objects.filter(status__id=pk):
+            messages.info(request, _('Unable to delete lable because it is in use'))
+            return redirect('/lables')
+        return super().dispatch(request, pk, *args, **kwargs)
+

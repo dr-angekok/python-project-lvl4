@@ -8,6 +8,7 @@ from django.shortcuts import redirect, render
 from django.utils.translation import ugettext as _
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView
+from tasks.models import Task
 
 from .forms import CustomUserCreationForm, UpdateUserForm
 
@@ -70,6 +71,9 @@ class Delete(LoginRequiredMixin, View):
                 return redirect('/users')
             messages.info(request, _('You are not authorized! Please sign in.'))
             return redirect('/login')
+        if Task.objects.filter(creator__id=user_id) or Task.objects.filter(assigned_to__id=user_id):
+            messages.info(request, _('It is impossible to delete a user who has tasks.'))
+            return redirect('/users')
         return super().dispatch(request, user_id, *args, **kwargs)
 
 

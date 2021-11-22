@@ -27,7 +27,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=600)
     status = models.ForeignKey(TaskStatus, on_delete=models.PROTECT, null=False, blank=False)
-    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    creator = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
     assigned_to = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, related_name="assigned_to")
     lables = models.ManyToManyField(TaskLable, blank=True)
 

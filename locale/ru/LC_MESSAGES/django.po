@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-18 21:59+0300\n"
+"POT-Creation-Date: 2021-11-22 21:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,45 +44,53 @@ msgstr "Метка"
 msgid "Name"
 msgstr "Имя"
 
-#: tasks/views.py:30
+#: tasks/views.py:31
 msgid "Status successfully created"
 msgstr "Статус успешно создан"
 
-#: tasks/views.py:42
+#: tasks/views.py:43
 msgid "Status successfully updated"
 msgstr "Статус успешно изменён"
 
-#: tasks/views.py:52
+#: tasks/views.py:53
 msgid "Status successfully deleted"
 msgstr "Статус успешно удалён"
 
-#: tasks/views.py:87
+#: tasks/views.py:57
+msgid "Unable to delete status because it is in use"
+msgstr "Невозможно удалить статус, потому что он используется"
+
+#: tasks/views.py:94
 msgid "Task successfully Created"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:98
+#: tasks/views.py:105
 msgid "Task successfully updated"
 msgstr "Задача успешно изменёна"
 
-#: tasks/views.py:108
+#: tasks/views.py:115
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалёна"
 
-#: tasks/views.py:113
+#: tasks/views.py:120
 msgid "You do not have permission to delet another user task."
 msgstr "У вас нет прав для удаления задачи другого пользователя."
 
-#: tasks/views.py:135
+#: tasks/views.py:142
 msgid "Lable successfully Created"
 msgstr "Метка успешно создана"
 
-#: tasks/views.py:148
+#: tasks/views.py:155
 msgid "Lable successfully updated"
 msgstr "Метка успешно изменена"
 
-#: tasks/views.py:159
+#: tasks/views.py:166
 msgid "Lable successfully deleted"
 msgstr "Метка успешно удалена"
+
+#: tasks/views.py:170
+msgid "Unable to delete lable because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: templates/base.html:12 templates/base.html:32
 msgid "Task manager"
@@ -352,35 +360,34 @@ msgstr "обновить страницу пользователя"
 msgid "Update user"
 msgstr "Изменить"
 
-#: users/views.py:25
+#: users/views.py:26
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: users/views.py:39
+#: users/views.py:40
 msgid "User edited successfully"
 msgstr "Пользователь успешно изменён"
 
-#: users/views.py:45 users/views.py:69
+#: users/views.py:46 users/views.py:70
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: users/views.py:47 users/views.py:71
+#: users/views.py:48 users/views.py:72
 msgid "You are not authorized! Please sign in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:63
+#: users/views.py:64
 msgid "Successfully delete."
 msgstr "Пользователь успешно удалён"
 
-#: users/views.py:88
+#: users/views.py:75
+msgid "It is impossible to delete a user who has tasks."
+msgstr "Невозможно удалить пользователя, потому что он используется"
+
+#: users/views.py:92
 msgid "You are now logged in."
 msgstr "Вы залогинены"
 
-#: users/views.py:92
+#: users/views.py:96
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
-
-#, fuzzy
-#~| msgid "Status successfully created"
-#~ msgid "Nask successfully Created"
-#~ msgstr "Статус успешно создан"
