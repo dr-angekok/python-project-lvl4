@@ -391,6 +391,3 @@ msgstr "Вы залогинены"
 #: users/views.py:96
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
-
-#~ msgid "You have't any statuses."
-#~ msgstr "У вас нет статусов."

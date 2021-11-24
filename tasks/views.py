@@ -57,6 +57,10 @@ class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             messages.info(request, _('Unable to delete status because it is in use'))
             return redirect('/statuses')
         return super().dispatch(request, pk, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(StatusDelete, self).delete(request, *args, **kwargs)
 
 class TasksView(generic.ListView):
     model = Task
@@ -120,6 +124,10 @@ class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             messages.info(request, _('You do not have permission to delet another user task.'))
             return HttpResponseRedirect(self.success_url)
         return super().get(request, pk)
+    
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(TaskDelete, self).delete(request, *args, **kwargs)
 
 
 class LablesView(generic.ListView):
@@ -170,4 +178,7 @@ class LableDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             messages.info(request, _('Unable to delete lable because it is in use'))
             return redirect('/lables')
         return super().dispatch(request, pk, *args, **kwargs)
-
+    
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(LableDelete, self).delete(request, *args, **kwargs)
