@@ -9,7 +9,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from tasks.filters import TaskFilter
-from tasks.forms import LabelForm, StatusForm
+from tasks.forms import LabelForm, StatusForm, TaskForm
 from tasks.models import Task, TaskLabel, TaskStatus
 
 
@@ -93,9 +93,9 @@ class TaskView(generic.DetailView):
 
 class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
-    fields = ('name', 'content', 'assigned_to', 'status', 'labels')
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully Created")
+    form_class = TaskForm
 
     def form_valid(self, form):
         form.instance.creator = self.request.user
@@ -104,9 +104,9 @@ class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
-    fields = ('name', 'content', 'assigned_to', 'status', 'labels')
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully updated")
+    form_class = TaskForm
     
     def form_valid(self, form):
         form.instance.creator = self.request.user

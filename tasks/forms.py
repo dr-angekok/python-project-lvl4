@@ -16,3 +16,16 @@ class LabelForm(ModelForm):
         model = TaskLabel
         fields = ('name',) 
         labels = {'name': _('Name'),}
+        
+        
+class  TaskForm(ModelForm):
+    class Meta:
+        model = Task
+        fields = ('name', 'content', 'status', 'assigned_to', 'labels')
+        labels = {
+            'name': _('Name'),
+            'content': _('content'),
+            'status': _('status'),
+            'assigned_to': _('assigned_to'),
+            'labels': _('labels')
+        }

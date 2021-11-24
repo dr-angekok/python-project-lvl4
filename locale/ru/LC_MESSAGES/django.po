@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-24 19:58+0300\n"
+"POT-Creation-Date: 2021-11-24 22:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,10 +40,32 @@ msgstr "Исполнитель"
 msgid "Label"
 msgstr "Метка"
 
-#: tasks/forms.py:11 tasks/forms.py:18 templates/tasks/statuses.html:14
+#: tasks/forms.py:11 tasks/forms.py:18 tasks/forms.py:26
+#: templates/tasks/labels.html:15 templates/tasks/statuses.html:15
+#: templates/tasks/tasklabel_form.html:20
 #: templates/tasks/taskstatus_form.html:21
 msgid "Name"
 msgstr "Имя"
+
+#: tasks/forms.py:27
+msgid "content"
+msgstr "Описание"
+
+#: tasks/forms.py:28
+msgid "status"
+msgstr "Статус"
+
+#: tasks/forms.py:29
+msgid "creator"
+msgstr "Создатель"
+
+#: tasks/forms.py:30
+msgid "assigned_to"
+msgstr "Исполнитель"
+
+#: tasks/forms.py:31
+msgid "labels"
+msgstr "Метки"
 
 #: tasks/views.py:31
 msgid "Status successfully created"
@@ -61,35 +83,35 @@ msgstr "Статус успешно удалён"
 msgid "Unable to delete status because it is in use"
 msgstr "Невозможно удалить статус, потому что он используется"
 
-#: tasks/views.py:94
+#: tasks/views.py:97
 msgid "Task successfully Created"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:105
+#: tasks/views.py:108
 msgid "Task successfully updated"
 msgstr "Задача успешно изменёна"
 
-#: tasks/views.py:115
+#: tasks/views.py:119
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалёна"
 
-#: tasks/views.py:120
+#: tasks/views.py:124
 msgid "You do not have permission to delet another user task."
 msgstr "У вас нет прав для удаления задачи другого пользователя."
 
-#: tasks/views.py:142
+#: tasks/views.py:150
 msgid "Label successfully Created"
 msgstr "Метка успешно создана"
 
-#: tasks/views.py:155
+#: tasks/views.py:163
 msgid "Label successfully updated"
 msgstr "Метка успешно изменена"
 
-#: tasks/views.py:166
+#: tasks/views.py:174
 msgid "Label successfully deleted"
 msgstr "Метка успешно удалена"
 
-#: tasks/views.py:170
+#: tasks/views.py:178
 msgid "Unable to delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
@@ -153,18 +175,20 @@ msgstr "Залогинется назад"
 msgid "Label info"
 msgstr "Содержимое метки"
 
-#: templates/tasks/label.html:14 templates/tasks/labels.html:15
-#: templates/tasks/status.html:14 templates/tasks/statuses.html:15
-#: templates/tasks/statuses.html:26 templates/tasks/task.html:37
-#: templates/tasks/tasks_list.html:39 templates/tasks/taskstatus_form.html:22
+#: templates/tasks/label.html:14 templates/tasks/labels.html:16
+#: templates/tasks/labels.html:26 templates/tasks/status.html:14
+#: templates/tasks/statuses.html:16 templates/tasks/statuses.html:27
+#: templates/tasks/task.html:37 templates/tasks/tasklabel_form.html:21
+#: templates/tasks/tasklabel_form.html:31 templates/tasks/tasks_list.html:39
+#: templates/tasks/taskstatus_form.html:22
 #: templates/tasks/taskstatus_form.html:33 templates/users/list.html:16
 msgid "Edit"
 msgstr "Изменить"
 
-#: templates/tasks/label.html:14 templates/tasks/labels.html:15
-#: templates/tasks/status.html:14 templates/tasks/statuses.html:27
-#: templates/tasks/task.html:38 templates/tasks/tasks_list.html:40
-#: templates/tasks/taskstatus_form.html:34
+#: templates/tasks/label.html:14 templates/tasks/labels.html:27
+#: templates/tasks/status.html:14 templates/tasks/statuses.html:28
+#: templates/tasks/task.html:38 templates/tasks/tasklabel_form.html:32
+#: templates/tasks/tasks_list.html:40 templates/tasks/taskstatus_form.html:34
 msgid "Delete"
 msgstr "Удалить"
 
@@ -180,13 +204,13 @@ msgstr "Изменить"
 msgid "Labels list:"
 msgstr "Список меток"
 
-#: templates/tasks/labels.html:21
-msgid "You don't have any labels. "
-msgstr "У вас нет меток."
-
-#: templates/tasks/labels.html:23
+#: templates/tasks/labels.html:9
 msgid "Add new Label"
 msgstr "Создать метку"
+
+#: templates/tasks/labels.html:35 templates/tasks/tasklabel_form.html:40
+msgid "You don't have any labels. "
+msgstr "У вас нет меток."
 
 #: templates/tasks/status.html:6
 msgid "Status info"
@@ -207,6 +231,10 @@ msgstr "Статусы задач"
 #: templates/tasks/statuses.html:9
 msgid "New status"
 msgstr "Создать статус"
+
+#: templates/tasks/statuses.html:36 templates/tasks/taskstatus_form.html:41
+msgid "You don't have any statuses."
+msgstr "У вас нет статусов"
 
 #: templates/tasks/task.html:22 templates/tasks/task.html:31
 #: templates/tasks/tasks_list.html:51
@@ -299,10 +327,6 @@ msgstr "Добавить статус задач"
 #: templates/tasks/taskstatus_form.html:12
 msgid "Add Status"
 msgstr "Создать"
-
-#: templates/tasks/taskstatus_form.html:41
-msgid "You don't have any statuses."
-msgstr "У вас нет статусов"
 
 #: templates/users/create.html:7
 msgid "Create user"
