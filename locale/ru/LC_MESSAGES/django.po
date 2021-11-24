@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-22 21:52+0300\n"
+"POT-Creation-Date: 2021-11-24 19:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,8 @@ msgstr "Исполнитель"
 msgid "Lable"
 msgstr "Метка"
 
-#: tasks/forms.py:11 tasks/forms.py:18
+#: tasks/forms.py:11 tasks/forms.py:18 templates/tasks/statuses.html:14
+#: templates/tasks/taskstatus_form.html:21
 msgid "Name"
 msgstr "Имя"
 
@@ -92,35 +93,35 @@ msgstr "Метка успешно удалена"
 msgid "Unable to delete lable because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: templates/base.html:12 templates/base.html:32
+#: templates/base.html:13 templates/base.html:33
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:37 templates/base.html:53
+#: templates/base.html:38 templates/base.html:54
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:40
+#: templates/base.html:41
 msgid "Tasks"
 msgstr "Задачи"
 
-#: templates/base.html:43
+#: templates/base.html:44
 msgid "Lables"
 msgstr "Метки"
 
-#: templates/base.html:46
+#: templates/base.html:47
 msgid "Statuses"
 msgstr "Статусы"
 
-#: templates/base.html:49
+#: templates/base.html:50
 msgid "logout"
 msgstr "Выход"
 
-#: templates/base.html:56
+#: templates/base.html:57
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/base.html:59
+#: templates/base.html:60
 msgid "Login"
 msgstr "Вход"
 
@@ -153,17 +154,17 @@ msgid "Lable info"
 msgstr "Содержимое метки"
 
 #: templates/tasks/lable.html:14 templates/tasks/lables.html:15
-#: templates/tasks/status.html:14 templates/tasks/status_form.html:24
-#: templates/tasks/statuses.html:14 templates/tasks/task.html:37
+#: templates/tasks/status.html:14 templates/tasks/statuses.html:15
+#: templates/tasks/statuses.html:26 templates/tasks/task.html:37
 #: templates/tasks/tasks_list.html:39 templates/tasks/taskstatus_form.html:22
-#: templates/users/list.html:16
+#: templates/tasks/taskstatus_form.html:33 templates/users/list.html:16
 msgid "Edit"
 msgstr "Изменить"
 
 #: templates/tasks/lable.html:14 templates/tasks/lables.html:15
-#: templates/tasks/status.html:14 templates/tasks/status_form.html:24
-#: templates/tasks/statuses.html:14 templates/tasks/task.html:38
-#: templates/tasks/tasks_list.html:40 templates/tasks/taskstatus_form.html:22
+#: templates/tasks/status.html:14 templates/tasks/statuses.html:27
+#: templates/tasks/task.html:38 templates/tasks/tasks_list.html:40
+#: templates/tasks/taskstatus_form.html:34
 msgid "Delete"
 msgstr "Удалить"
 
@@ -187,28 +188,19 @@ msgstr "У вас нет меток."
 msgid "Add new Lable"
 msgstr "Создать метку"
 
-#: templates/tasks/status.html:6 templates/tasks/status_form.html:6
+#: templates/tasks/status.html:6
 msgid "Status info"
 msgstr "Содержимое статуса"
 
-#: templates/tasks/status_form.html:14 templates/tasks/taskstatus_form.html:12
-msgid "Add Status"
-msgstr "Создать"
+#: templates/tasks/status_update.html:6 templates/tasks/status_update.html:15
+msgid "Update Status"
+msgstr "Изменение статуса "
 
-#: templates/tasks/status_form.html:17 templates/tasks/statuses.html:5
-#: templates/tasks/taskstatus_form.html:15
+#: templates/tasks/statuses.html:5 templates/tasks/taskstatus_form.html:15
 msgid "Task statuses:"
 msgstr "Статусы задач"
 
-#: templates/tasks/status_form.html:30
-msgid "You have't any statuses."
-msgstr "У вас нет статусов."
-
-#: templates/tasks/status_update.html:6 templates/tasks/status_update.html:15
-msgid "Update Status"
-msgstr "Изменить"
-
-#: templates/tasks/statuses.html:19
+#: templates/tasks/statuses.html:9
 msgid "New status"
 msgstr "Создать статус"
 
@@ -300,7 +292,11 @@ msgstr "Вы уверены что хотите удалить статус: "
 msgid "Add Task Status"
 msgstr "Добавить статус задач"
 
-#: templates/tasks/taskstatus_form.html:28
+#: templates/tasks/taskstatus_form.html:12
+msgid "Add Status"
+msgstr "Создать"
+
+#: templates/tasks/taskstatus_form.html:41
 msgid "You don't have any statuses."
 msgstr "У вас нет статусов"
 
@@ -391,3 +387,6 @@ msgstr "Вы залогинены"
 #: users/views.py:96
 msgid "You are now logged out."
 msgstr "Вы разлогинены"
+
+#~ msgid "You have't any statuses."
+#~ msgstr "У вас нет статусов."
