@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block page_header %}
+  <h1>{% trans "Label info" %}</h1>
+{% endblock %}
+
+{% block content %}
+      <div class="card bg-white text-dark mb-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6"><div class="text-left"><a href="{% url 'label' tasklabel.id %}">{{ tasklabel.name }}</a></div></div>
+                <div class="col-md-6"><div class="text-right"><a href="{% url 'label_update' tasklabel.id %}" class="badge badge-primary">{% trans "Edit" %}</a> <a href="{% url 'label_delete' tasklabel.id %}" class="badge badge-danger">{% trans "Delete" %}</a></div></div>
+            </div>
+        </div>
+      </div>
+{% endblock %}

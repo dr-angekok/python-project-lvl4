@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django.utils.translation import ugettext as _
 
-from .models import TaskLable, TaskStatus, Task
+from .models import TaskLabel, TaskStatus, Task
 
 
 class StatusForm(ModelForm):
@@ -11,8 +11,8 @@ class StatusForm(ModelForm):
         labels = {'name': _('Name'),}  
 
 
-class LableForm(ModelForm):
+class LabelForm(ModelForm):
     class Meta:    
-        model = TaskLable
+        model = TaskLabel
         fields = ('name',) 
         labels = {'name': _('Name'),}

@@ -3,8 +3,8 @@
 {% load i18n %}
 
 {% block page_header %}
-  <h1>{% trans "Update Lable " %}
-    <span class="badge badge-info">{{ tasklable.name }}</span>
+  <h1>{% trans "Update Label " %}
+    <span class="badge badge-info">{{ tasklabel.name }}</span>
   </h1>
 {% endblock %}
 
@@ -13,7 +13,7 @@
   {% csrf_token %}
   {% bootstrap_form form %}
   {% buttons %}
-    <button type="submit" class="btn btn-primary">{% trans "Update Lable"%} </button>
+    <button type="submit" class="btn btn-primary">{% trans "Update Label"%} </button>
   {% endbuttons %}
 </form>
 {% endblock %}

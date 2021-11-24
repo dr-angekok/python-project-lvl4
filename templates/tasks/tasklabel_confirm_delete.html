@@ -2,11 +2,11 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block page_header %}
-  <h1>{% trans "Delete Task Lable" %}</h1>
+  <h1>{% trans "Delete Task Label" %}</h1>
 {% endblock %}
 {% block content %}
-  <p>{% trans "Are you sure you want to delete lable: "%}
-    <span class="badge badge-info">{{ tasklable.name }}</span> ?</p>
+  <p>{% trans "Are you sure you want to delete label: "%}
+    <span class="badge badge-info">{{ tasklabel.name }}</span> ?</p>
   <form action="" method="POST">
     {% csrf_token %}
     <input class="btn btn-primary" type="submit" action="" value='{% trans "Yes, delete." %}' />
