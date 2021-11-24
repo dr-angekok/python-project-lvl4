@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-24 19:48+0300\n"
+"POT-Creation-Date: 2021-11-24 19:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,9 +192,13 @@ msgstr "Создать метку"
 msgid "Status info"
 msgstr "Содержимое статуса"
 
-#: templates/tasks/status_update.html:6 templates/tasks/status_update.html:15
+#: templates/tasks/status_update.html:6
 msgid "Update Status"
 msgstr "Изменение статуса "
+
+#: templates/tasks/status_update.html:15
+msgid "Update"
+msgstr "Изменить"
 
 #: templates/tasks/statuses.html:5 templates/tasks/taskstatus_form.html:15
 msgid "Task statuses:"
