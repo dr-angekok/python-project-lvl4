@@ -11,5 +11,32 @@
   {% buttons %}
   <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
   {% endbuttons %}
-</form>
+    </form>
+    {% if labels %}
+    <table class="table table-hover mx-auto my-3">
+      <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">{% trans "Name" %}</th>
+            <th scope="col">{% trans "Edit" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for label in labels %}
+    <tr>
+      <td scope="row">{{ label.id }}</td>
+      <td scope="row"><a href="{% url 'label' label.id %}">{{ label.name }}</a></td>
+      <td scope="row">
+        <div>
+          <a href="{% url 'label_update' label.id %}" class="badge badge-primary">{% trans "Edit" %}</a>
+          <a href="{% url 'label_delete' label.id %}" class="badge badge-danger">{% trans "Delete" %}</a>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  {% endfor %}
+    </table>
+  {% else %}
+    <p>{% trans "You don't have any labels. "%}</p>
+  {% endif %} 
 {% endblock %}
