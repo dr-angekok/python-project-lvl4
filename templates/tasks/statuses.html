@@ -2,19 +2,32 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block page_header %}
-<h3 class="cover-heading">{% trans "Task statuses:" %}</h3>
+<h2 class="cover-heading">{% trans "Task statuses:" %}</h2>
 {% endblock %}
 
 {% block content %}
+<p class="card-text"><a href="{% url 'status_create'%}">{% trans "New status" %}</a></p>
+<table class="table table-hover mx-auto my-4">
+<thead class="thead-light">
+  <tr>
+      <th scope="col">ID</th>
+      <th scope="col">{% trans "Name" %}</th>
+      <th scope="col">{% trans "Edit" %}</th>
+  </tr>
+</thead>
+
+<tbody>
 {% for task_status in statuses %}
-<div class="card bg-white text-dark mb-3">
-  <div class="card-header">
-    <div class="row">
-      <div class="col-md-6"><div class="text-left"><a href="{% url 'status' task_status.id %}">{{ task_status.name }}</a></div></div>
-      <div class="col-md-6"><div class="text-right"><a href="{% url 'status_update' task_status.id %}" class="badge badge-primary">{% trans "Edit" %}</a> <a href="{% url 'status_delete' task_status.id %}" class="badge badge-danger">{%trans "Delete" %}</a></div></div>
+<tr>
+  <td scope="row">{{ task_status.id }}</td>
+  <td scope="row"><a href="{% url 'status' task_status.id %}">{{ task_status.name }}</a></td>
+  <td scope="row">
+    <div>
+      <a href="{% url 'status_update' task_status.id %}" class="badge badge-primary">{% trans "Edit" %}</a>
+      <a href="{% url 'status_delete' task_status.id %}" class="badge badge-danger">{% trans "Delete" %}</a>
     </div>
-  </div>
-</div>
+  </td>
+</tr>
 {% endfor %}
-  <p class="card-text"><a href="{% url 'status_create'%}">{% trans "New status" %}</a></p>
-  {% endblock %}
+</table>
+{% endblock %}

@@ -14,16 +14,29 @@
 </form>
   <h3 class="cover-heading">{% trans "Task statuses:" %}</h3>
   {% if statuses %}
-  {% for task_status in statuses %}
-  <div class="card bg-white text-dark mb-3">
-    <div class="card-header">
-      <div class="row">
-        <div class="col-md-6"><div class="text-left"><a href="{% url 'status' task_status.id %}">{{ task_status.name }}</a></div></div>
-        <div class="col-md-6"><div class="text-right"><a href="{% url 'status_update' task_status.id %}" class="badge badge-primary">{% trans "Edit" %}</a> <a href="{% url 'status_delete' task_status.id %}" class="badge badge-danger">{%trans "Delete" %}</a></div></div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
+  <table class="table table-hover mx-auto my-4">
+    <thead class="thead-light">
+      <tr>
+          <th scope="col">ID</th>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Edit" %}</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+    {% for task_status in statuses %}
+    <tr>
+      <td scope="row">{{ task_status.id }}</td>
+      <td scope="row"><a href="{% url 'status' task_status.id %}">{{ task_status.name }}</a></td>
+      <td scope="row">
+        <div>
+          <a href="{% url 'status_update' task_status.id %}" class="badge badge-primary">{% trans "Edit" %}</a>
+          <a href="{% url 'status_delete' task_status.id %}" class="badge badge-danger">{% trans "Delete" %}</a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
   {% else %}
     <p>{% trans "You don't have any statuses."%} </p>
   {% endif %}
