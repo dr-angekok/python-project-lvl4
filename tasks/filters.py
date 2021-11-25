@@ -7,7 +7,7 @@ from tasks.models import Task
 class TaskFilter(django_filters.FilterSet):
     class Meta:
         model = Task
-        fields = ['status', 'assigned_to', 'labels']
+        fields = ['status', 'executor', 'labels']
         labels = {'status': _('Status'),
-                  'assigned_to': _('Assigned to'),
+                  'executor': _('Assigned to'),
                   'labels': _('Label')}

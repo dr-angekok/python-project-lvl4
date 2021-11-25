@@ -21,11 +21,11 @@ class LabelForm(ModelForm):
 class  TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ('name', 'content', 'status', 'assigned_to', 'labels')
+        fields = ('name', 'content', 'status', 'executor', 'labels')
         labels = {
             'name': _('Name'),
             'content': _('content'),
             'status': _('status'),
-            'assigned_to': _('assigned_to'),
+            'executor': _('assigned_to'),
             'labels': _('labels')
         }

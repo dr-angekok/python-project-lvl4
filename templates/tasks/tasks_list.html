@@ -12,7 +12,7 @@
     <h3>{% trans "Filters:" %}</h3>
       <form action="" method="get" class="form">
         {% bootstrap_form filter.form %}
-        <div class="form-check"><input type="checkbox" name="assigned_to__username" value={{ user.username }} class="form-check-input" id="id_self_tasks">
+        <div class="form-check"><input type="checkbox" name="executor__username" value={{ user.username }} class="form-check-input" id="id_self_tasks">
           <label class="form-check-label" for="id_self_tasks">{% trans "Only your tasks" %}</label>
         </div>
         {% buttons %}
@@ -48,7 +48,7 @@
       <div class="card-header">
         <div class="row">
           <div><span class="badge badge-info">
-            {%trans "From "%} {{ task.creator }} {%trans " to "%} {{ task.assigned_to }}
+            {%trans "From "%} {{ task.creator }} {%trans " to "%} {{ task.executor }}
           </span>
             <span class="badge badge-info">
             {%trans "Created at"%} {{ task.created_at }}
