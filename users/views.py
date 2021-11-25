@@ -71,7 +71,7 @@ class Delete(LoginRequiredMixin, View):
                 return redirect('/users')
             messages.info(request, _('You are not authorized! Please sign in.'))
             return redirect('/login')
-        if Task.objects.filter(creator__id=user_id) or Task.objects.filter(assigned_to__id=user_id):
+        if Task.objects.filter(creator__id=user_id) or Task.objects.filter(executor__id=user_id):
             messages.info(request, _('It is impossible to delete a user who has tasks.'))
             return redirect('/users')
         return super().dispatch(request, user_id, *args, **kwargs)
