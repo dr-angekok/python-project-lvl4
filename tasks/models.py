@@ -1,26 +1,9 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from labels.models import TaskLabel
+from statuses.models import TaskStatus
 
-
-
-class TaskLabel(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('label', args=[str(self.id)])
-
-class TaskStatus(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('task_status', args=[str(self.id)])
 
 class Task(models.Model):
     name = models.CharField(max_length=255)

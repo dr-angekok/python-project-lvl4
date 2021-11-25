@@ -9,58 +9,9 @@ from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from tasks.filters import TaskFilter
-from tasks.forms import LabelForm, StatusForm, TaskForm
-from tasks.models import Task, TaskLabel, TaskStatus
+from tasks.forms import TaskForm
+from tasks.models import Task
 
-
-class StatusesView(generic.ListView):
-    template_name = 'tasks/statuses.html'
-    context_object_name = 'statuses'
-
-    def get_queryset(self):
-        return TaskStatus.objects.all()
-
-class StatusView(generic.DetailView):
-    model = TaskStatus
-    template_name = "tasks/status.html"
-
-class StatusCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = TaskStatus
-    success_url = reverse_lazy('statuses')
-    form_class = StatusForm
-    success_message = _("Status successfully created")
-
-    def get_context_data(self, **kwargs):
-        context = super(StatusCreate, self).get_context_data(**kwargs)
-        context['statuses'] = TaskStatus.objects.all()
-        return context
-
-class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = TaskStatus
-    success_url = reverse_lazy('statuses')
-    template_name = 'tasks/status_update.html'
-    form_class = StatusForm
-    success_message = _("Status successfully updated")
-
-    def get_context_data(self, **kwargs):
-        context = super(StatusUpdate, self).get_context_data(**kwargs)
-        context['statuses'] = TaskStatus.objects.all()
-        return context
-
-class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    model = TaskStatus
-    success_url = reverse_lazy('statuses')
-    success_message = _("Status successfully deleted")
-
-    def dispatch(self, request, pk, *args, **kwargs):
-        if Task.objects.filter(status__id=pk):
-            messages.info(request, _('Unable to delete status because it is in use'))
-            return redirect('/statuses')
-        return super().dispatch(request, pk, *args, **kwargs)
-    
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
-        return super(StatusDelete, self).delete(request, *args, **kwargs)
 
 class TasksView(generic.ListView):
     model = Task
@@ -128,57 +79,3 @@ class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(TaskDelete, self).delete(request, *args, **kwargs)
-
-
-class LabelsView(generic.ListView):
-    template_name = 'tasks/labels.html'
-    context_object_name = 'labels'
-
-    def get_queryset(self):
-        return TaskLabel.objects.all()
-
-
-class LabelView(generic.DetailView):
-    model = TaskLabel
-    template_name = "tasks/label.html"
-
-
-class LabelCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = TaskLabel
-    form_class = LabelForm
-    success_url = reverse_lazy('labels')
-    success_message = _("Label successfully Created")
-
-    def get_context_data(self, **kwargs):
-        context = super(LabelCreate, self).get_context_data(**kwargs)
-        context['labels'] = TaskLabel.objects.all()
-        return context
-
-
-class LabelUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    model = TaskLabel
-    form_class = LabelForm
-    success_url = reverse_lazy('labels')
-    template_name = 'tasks/label_update.html'
-    success_message = _("Label successfully updated")
-
-    def get_context_data(self, **kwargs):
-        context = super(LabelUpdate, self).get_context_data(**kwargs)
-        context['labels'] = TaskLabel.objects.all()
-        return context
-
-
-class LabelDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
-    model = TaskLabel
-    success_url = reverse_lazy('labels')
-    success_message = _("Label successfully deleted")
-    
-    def dispatch(self, request, pk, *args, **kwargs):
-        if Task.objects.filter(status__id=pk):
-            messages.info(request, _('Unable to delete label because it is in use'))
-            return redirect('/labels')
-        return super().dispatch(request, pk, *args, **kwargs)
-    
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
-        return super(LabelDelete, self).delete(request, *args, **kwargs)

@@ -26,4 +26,6 @@ urlpatterns = [
     path("login/", LoginFormView.as_view(), name="login"),
     path('', include('django.contrib.auth.urls')),
     path('', include('tasks.urls')),
+    path('', include('labels.urls')),
+    path('', include('statuses.urls')),
 ]
