@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.translation import ugettext as _
 
@@ -15,3 +16,8 @@ class  TaskForm(ModelForm):
             'executor': _('assigned_to'),
             'labels': _('labels')
         }
+
+    def __init__(self, *args, **kwargs):
+        super(TaskForm, self).__init__(*args, **kwargs)
+        self.fields['executor'].queryset = User.objects.all()
+        self.fields['executor'].label_from_instance = lambda obj: "%s %s" % (obj.first_name, obj.last_name)
