@@ -44,6 +44,7 @@ class TaskView(generic.DetailView):
 
 class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Task
+    template_name = "tasks/task_create_form.html"
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully Created")
     form_class = TaskForm
@@ -55,6 +56,7 @@ class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Task
+    template_name = "tasks/task_update_form.html"
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully updated")
     form_class = TaskForm
