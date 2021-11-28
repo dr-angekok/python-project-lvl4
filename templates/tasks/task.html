@@ -21,7 +21,7 @@
   <div class="card-body">
     <p class="card-text text-left">{%trans "From "%} {{ task.creator }} {%trans " to "%} {{ task.executor }}</p>
     <p class="card-text text-left">{{task.creator.first_name}} {{task.creator.last_name}} {% trans " gave the task "%} {{task.executor.first_name}} {{task.executor.last_name}}</p>
-    <p class="card-text">{{task.content}}</p>
+    <p class="card-text">{{task.description}}</p>
     <p class="card-text text-right">{{task.created_at}}</p>
   </div>
 

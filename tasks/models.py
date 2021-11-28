@@ -8,7 +8,7 @@ from statuses.models import TaskStatus
 class Task(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
-    content = models.TextField(max_length=600)
+    description = models.TextField(max_length=600)
     status = models.ForeignKey(TaskStatus, on_delete=models.PROTECT, null=False, blank=False)
     creator = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
     executor = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, related_name = 'executor')

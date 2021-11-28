@@ -8,10 +8,10 @@ from .models import Task
 class  TaskForm(ModelForm):
     class Meta:
         model = Task
-        fields = ('name', 'content', 'status', 'executor', 'labels')
+        fields = ('name', 'description', 'status', 'executor', 'labels')
         labels = {
             'name': _('Name'),
-            'content': _('content'),
+            'description': _('content'),
             'status': _('status'),
             'executor': _('assigned_to'),
             'labels': _('labels')
