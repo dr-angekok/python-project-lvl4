@@ -8,6 +8,9 @@ class TaskFilter(django_filters.FilterSet):
     class Meta:
         model = Task
         fields = ['status', 'executor', 'labels']
-        labels = {'status': _('Status'),
-                  'executor': _('Assigned to'),
-                  'labels': _('Label')}
+
+    def __init__(self, *args, **kwargs):
+        super(TaskFilter, self).__init__(*args, **kwargs)
+        self.filters['status'].label=_('Status')
+        self.filters['executor'].label=_('Assigned to')
+        self.filters['labels'].label=_('Label')
