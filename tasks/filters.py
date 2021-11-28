@@ -13,4 +13,5 @@ class TaskFilter(django_filters.FilterSet):
         super(TaskFilter, self).__init__(*args, **kwargs)
         self.filters['status'].label=_('Status')
         self.filters['executor'].label=_('Assigned to')
+        self.filters['executor'].field.label_from_instance = lambda obj: "{} {}".format(obj.first_name, obj.last_name)
         self.filters['labels'].label=_('Label')
