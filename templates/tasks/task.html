@@ -12,8 +12,8 @@
     <div class="row">
       <div class="text-left"><b><a href="{% url 'task' task.id %}">{{ task.name }}</a></b> 
         <span class="badge badge-info">{{ task.status }}</span>
-        {% for lable in task.lables.all %}
-          <span class="badge badge-primary">{{lable}}</span>
+        {% for label in task.labels.all %}
+          <span class="badge badge-primary">{{label}}</span>
         {% endfor %}
       </div>
     </div>
