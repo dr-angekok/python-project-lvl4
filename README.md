@@ -16,7 +16,7 @@ you must have poetry installed to continue
 ```
 make install
 ```
-Now you should rename file .env.example to .env and added value of variable environments
+Now you should rename file env.example to .env and added value of variable environments
 
 After this:
 ```
