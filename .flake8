@@ -3,7 +3,6 @@ count
 show-source
 statistics
 exit-zero
-ignore = F401
 max-complexity=10
-max-line-length=127
-exclude = .git,__pycache__,./tasks/migrations/
+max-line-length=100
+exclude = .git,__pycache__,./tasks/migrations/,./statuses/migrations,./labels/migrations

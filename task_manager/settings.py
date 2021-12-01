@@ -14,7 +14,6 @@ from pathlib import Path
 
 import dj_database_url
 import django_heroku
-import rollbar
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
 

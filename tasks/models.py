@@ -11,7 +11,11 @@ class Task(models.Model):
     description = models.TextField(max_length=600)
     status = models.ForeignKey(TaskStatus, on_delete=models.PROTECT, null=False, blank=False)
     creator = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
-    executor = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True, related_name='executor')
+    executor = models.ForeignKey(User,
+                                 on_delete=models.PROTECT,
+                                 null=True,
+                                 blank=True,
+                                 related_name='executor')
     labels = models.ManyToManyField(TaskLabel, blank=True)
 
     def __str__(self):
