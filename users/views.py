@@ -39,7 +39,7 @@ class Update(LoginRequiredMixin, UpdateView):
         self.object.save()
         messages.info(self.request, _('User edited successfully'))
         return redirect('/users')
- 
+
     def dispatch(self, request, pk, *args, **kwargs):
         if request.user.id is not pk:
             if request.user.is_authenticated:
@@ -63,7 +63,7 @@ class Delete(LoginRequiredMixin, View):
         user.delete()
         messages.info(request, _('Successfully delete.'))
         return redirect('/users')
-    
+
     def dispatch(self, request, user_id, *args, **kwargs):
         if request.user.id is not user_id:
             if request.user.is_authenticated:
@@ -94,5 +94,6 @@ class LoginFormView(SuccessMessageMixin, LoginView):
 
 def logged_out_message(sender, user, request, **kwargs):
     messages.info(request, _('You are now logged out.'))
+
 
 user_logged_out.connect(logged_out_message)

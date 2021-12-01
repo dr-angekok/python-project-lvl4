@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+
+import dj_database_url
+import django_heroku
+import rollbar
 from django.urls import reverse_lazy
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -92,7 +96,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
@@ -129,10 +132,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-gettext = lambda s: s
 LANGUAGES = (
-    ('ru-ru', gettext('Russian')),
-    ('en-us', gettext('English')),
+    ('ru-ru', 'Russian'),
+    ('en-us', 'English'),
 )
 
 
@@ -152,7 +154,7 @@ LOGIN_URL = reverse_lazy('login')
 
 LOGOUT_URL = reverse_lazy('logout')
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL = '/'
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -163,9 +165,6 @@ ROLLBAR = {
     'environment': 'development' if DEBUG else 'production',
     'root': BASE_DIR,
 }
-import rollbar
-# rollbar.init(**ROLLBAR)
 
 if '/app' in os.environ['HOME']:
-    import django_heroku
     django_heroku.settings(locals())

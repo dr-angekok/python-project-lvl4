@@ -42,5 +42,5 @@ class TaskTest(TestCase):
         self.assertEqual(response.status_code, 200)
         response = self.client.post('/login/', {'username': 'Igor', 'password': 'password!@#$123'})
         response = self.client.get('/tasks/')
-        content = response.content.decode("utf-8") 
+        content = response.content.decode("utf-8")
         self.assertTrue(content.__contains__('Task name'))

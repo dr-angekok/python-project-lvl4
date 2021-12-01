@@ -20,9 +20,11 @@ class StatusesView(generic.ListView):
     def get_queryset(self):
         return TaskStatus.objects.all()
 
+
 class StatusView(generic.DetailView):
     model = TaskStatus
     template_name = "statuses/status.html"
+
 
 class StatusCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = TaskStatus
@@ -34,6 +36,7 @@ class StatusCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         context = super(StatusCreate, self).get_context_data(**kwargs)
         context['statuses'] = TaskStatus.objects.all()
         return context
+
 
 class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = TaskStatus
@@ -47,6 +50,7 @@ class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         context['statuses'] = TaskStatus.objects.all()
         return context
 
+
 class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
@@ -57,7 +61,7 @@ class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             messages.info(request, _('Unable to delete status because it is in use'))
             return redirect('/statuses')
         return super().dispatch(request, pk, *args, **kwargs)
-    
+
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(StatusDelete, self).delete(request, *args, **kwargs)

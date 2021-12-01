@@ -5,7 +5,7 @@ from .models import TaskStatus
 
 
 class StatusForm(ModelForm):
-    class Meta:    
+    class Meta:
         model = TaskStatus
-        fields = ('name',) 
-        labels = {'name': _('Name'),}  
+        fields = ('name',)
+        labels = {'name': _('Name'), }

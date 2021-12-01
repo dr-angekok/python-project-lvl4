@@ -60,7 +60,7 @@ class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully updated")
     form_class = TaskForm
-    
+
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super(TaskUpdate, self).form_valid(form)
@@ -77,7 +77,7 @@ class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
             messages.info(request, _('You do not have permission to delet another user task.'))
             return HttpResponseRedirect(self.success_url)
         return super().get(request, pk)
-    
+
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(TaskDelete, self).delete(request, *args, **kwargs)

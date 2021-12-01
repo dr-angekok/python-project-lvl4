@@ -54,14 +54,13 @@ class LabelDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = TaskLabel
     success_url = reverse_lazy('labels')
     success_message = _("Label successfully deleted")
-    
+
     def dispatch(self, request, pk, *args, **kwargs):
         if Task.objects.filter(status__id=pk):
             messages.info(request, _('Unable to delete label because it is in use'))
             return redirect('/labels')
         return super().dispatch(request, pk, *args, **kwargs)
-    
+
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(LabelDelete, self).delete(request, *args, **kwargs)
-
