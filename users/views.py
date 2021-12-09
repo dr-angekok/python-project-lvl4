@@ -10,30 +10,30 @@ from django.views import View
 from django.views.generic.edit import CreateView, UpdateView
 from tasks.models import Task
 
-from .forms import CustomUserCreationForm, UpdateUserForm
+from .forms import UserForm
 
 
 class Create(CreateView):
     template_name = 'users/create.html'
 
     def get(self, request):
-        return render(request, self.template_name, context={'form': CustomUserCreationForm()})
+        return render(request, self.template_name, context={'form': UserForm()})
 
     def post(self, request):
-        form = CustomUserCreationForm(data=request.POST)
+        form = UserForm(data=request.POST)
         if form.is_valid():
             form.save()
             messages.info(request, _('User registered successfully'))
             return redirect("/login")
         return render(request,
                       self.template_name,
-                      context={'form': CustomUserCreationForm(data=request.POST)})
+                      context={'form': UserForm(data=request.POST)})
 
 
 class Update(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
-    form_class = UpdateUserForm
+    form_class = UserForm
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
