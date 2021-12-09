@@ -1,9 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from django.contrib.auth.signals import user_logged_out
-from django.contrib.auth.views import LoginView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect, render
 from django.utils.translation import ugettext as _
 from django.views import View
@@ -86,16 +83,3 @@ class List(View):
         users = User.objects.all()
         context = {'users': users}
         return render(request, self.template_name, context=context)
-
-
-class LoginFormView(SuccessMessageMixin, LoginView):
-    template_name = 'users/login.html'
-    success_url = '/'
-    success_message = _("You are now logged in.")
-
-
-def logged_out_message(sender, user, request, **kwargs):
-    messages.info(request, _('You are now logged out.'))
-
-
-user_logged_out.connect(logged_out_message)
