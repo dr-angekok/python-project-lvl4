@@ -25,6 +25,6 @@ class Task(models.Model):
         return reverse('task', args=[str(self.id)])
 
 
-class RelatedModel(models.Model):
+class TaskLabels(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     label = models.ForeignKey(TaskLabel, on_delete=models.PROTECT)
