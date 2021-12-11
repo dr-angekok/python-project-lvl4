@@ -1,11 +1,9 @@
 from django.contrib.auth.models import User
 from django.test import Client, RequestFactory, TestCase
-from labels.models import TaskLabel
-from statuses.models import TaskStatus
-
+from task_manager.labels.models import TaskLabel
+from task_manager.statuses.models import TaskStatus
 from task_manager.tasks import views
 from task_manager.tasks.models import Task
-
 
 TEST_CASE = (
     (('/tasks/', '/login/',

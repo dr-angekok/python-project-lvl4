@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from django.test import Client, RequestFactory, TestCase
 
-from statuses import views
-from statuses.models import TaskStatus
+from task_manager.statuses import views
+from task_manager.statuses.models import TaskStatus
 
 
 TEST_CASE = (
