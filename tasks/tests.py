@@ -7,6 +7,16 @@ from tasks import views
 from tasks.models import Task
 
 
+TEST_CASE = (
+    (('/tasks/', '/login/',
+      {'username': 'Igor', 'password': 'password!@#$123'}), ('Task name',)),
+    (('/tasks/1/', None,
+      None), ('Task name', 'Task description')),
+    (('/tasks/', '/tasks/1/delete/',
+      None), ('"success">Задача успешно удалена<', 'Нет задач'))
+)
+
+
 class TaskTest(TestCase):
 
     def setUp(self):
@@ -29,6 +39,12 @@ class TaskTest(TestCase):
         task.labels.add(label)
         return task
 
+    def get_page(self, get_link, post_link=None, post_data=None):
+        if post_link:
+            self.client.post(post_link, post_data)
+        response = self.client.get(get_link)
+        return response.content.decode("utf-8")
+
     def test_task_create(self):
         task = self.createTask()
         self.assertTrue(isinstance(task, Task))
@@ -40,7 +56,9 @@ class TaskTest(TestCase):
         request.user = self.user
         response = views.TasksView.as_view()(request)
         self.assertEqual(response.status_code, 200)
-        response = self.client.post('/login/', {'username': 'Igor', 'password': 'password!@#$123'})
-        response = self.client.get('/tasks/')
-        content = response.content.decode("utf-8")
-        self.assertTrue(content.__contains__('Task name'))
+
+        for prepear_data, cases in TEST_CASE:
+            get_link, post_link, post_data = prepear_data
+            content = self.get_page(get_link, post_link, post_data)
+            for case in cases:
+                self.assertTrue(content.__contains__(case))
