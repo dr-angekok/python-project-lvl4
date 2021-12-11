@@ -16,18 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from task_manager.views import index
-
-from .views import LoginFormView, LogoutFormView
+from .views import LoginFormView, LogoutFormView, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('users/', include('users.urls')),
+    path('users/', include('task_manager.users.urls')),
     path('login/', LoginFormView.as_view(), name='login'),
     path('logout/', LogoutFormView.as_view(), name='logout'),
     path('', include('django.contrib.auth.urls')),
-    path('', include('tasks.urls')),
-    path('', include('labels.urls')),
-    path('', include('statuses.urls')),
+    path('', include('task_manager.tasks.urls')),
+    path('', include('task_manager.labels.urls')),
+    path('', include('task_manager.statuses.urls')),
 ]

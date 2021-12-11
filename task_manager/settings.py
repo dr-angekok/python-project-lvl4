@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 load_dotenv(BASE_DIR / ".env")
 
 # Quick-start development settings - unsuitable for production
@@ -45,10 +46,10 @@ INSTALLED_APPS = [
     'django_filters',
     'task_manager',
     'bootstrap4',
-    'users',
-    'tasks',
-    'labels',
-    'statuses'
+    'task_manager.users',
+    'task_manager.tasks',
+    'task_manager.labels',
+    'task_manager.statuses'
 ]
 
 MIDDLEWARE = [

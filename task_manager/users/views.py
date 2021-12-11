@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from django.utils.translation import ugettext as _
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView
-from tasks.models import Task
+from task_manager.tasks.models import Task
 
 from .forms import UserForm
 

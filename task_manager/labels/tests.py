@@ -1,9 +1,8 @@
 from django.contrib.auth.models import User
 from django.test import Client, RequestFactory, TestCase
 
-from labels import views
-from labels.models import TaskLabel
-
+from . import views
+from .models import TaskLabel
 
 TEST_CASE = (
     (('/labels/', '/login/',

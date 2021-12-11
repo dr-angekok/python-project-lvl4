@@ -28,8 +28,7 @@ class UserTest(TestCase):
         for name in USER_NAMES:
             self.user = User.objects.create_user(
                 username=name,
-                password='password!@#$123',
-                )
+                password='password!@#$123',)
         self.client = Client()
 
     def get_page(self, get_link, post_link=None, post_data=None):

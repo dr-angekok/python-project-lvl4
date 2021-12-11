@@ -7,15 +7,16 @@ from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
-from tasks.filters import TaskFilter
-from tasks.forms import TaskForm
-from tasks.models import Task
+from .filters import TaskFilter
+from .forms import TaskForm
+from .models import Task
 
 
 class TasksView(generic.ListView):
     model = Task
     template_name = 'tasks/tasks_list.html'
     context_object_name = 'tasks_list'
+    filterset_class = TaskFilter
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,0 +1,6 @@
+[
+  {"model": "taskstatus", "pk": 1, "fields": {"name": "New"}},
+  {"model": "taskstatus", "pk": 2, "fields": {"name": "In work"}},
+  {"model": "taskstatus", "pk": 3, "fields": {"name": "Testing"}},
+  {"model": "taskstatus", "pk": 4, "fields": {"name": "Finished"}}
+]

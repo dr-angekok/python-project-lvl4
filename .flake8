@@ -5,4 +5,4 @@ statistics
 exit-zero
 max-complexity=10
 max-line-length=100
-exclude = .git,__pycache__,./tasks/migrations/,./statuses/migrations,./labels/migrations
+exclude = .git,__pycache__,./task_manager/tasks/migrations/,./task_manager/statuses/migrations,./task_manager/labels/migrations
