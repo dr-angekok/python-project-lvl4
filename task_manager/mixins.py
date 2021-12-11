@@ -21,3 +21,12 @@ class UserNotInvolvedMixin():
             messages.info(request, self.delete_deny_massage)
             return redirect('/users')
         return super().dispatch(request, pk, *args, **kwargs)
+
+
+class NonUseItemRequireMixin():
+    def dispatch(self, request, pk, *args, **kwargs):
+        filter_args = {'{}__id'.format(self.non_use_require_field): pk}
+        if Task.objects.filter(**filter_args):
+            messages.info(request, self.delete_deny_massage)
+            return redirect(self.home_link)
+        return super().dispatch(request, pk, *args, **kwargs)

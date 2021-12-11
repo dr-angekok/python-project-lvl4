@@ -1,12 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from task_manager.tasks.models import Task
+from task_manager.mixins import NonUseItemRequireMixin
 
 from .forms import StatusForm
 from .models import TaskStatus
@@ -50,16 +49,13 @@ class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return context
 
 
-class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, NonUseItemRequireMixin, DeleteView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
     success_message = _("Status successfully deleted")
-
-    def dispatch(self, request, pk, *args, **kwargs):
-        if Task.objects.filter(status__id=pk):
-            messages.info(request, _('Unable to delete status because it is in use'))
-            return redirect('/statuses')
-        return super().dispatch(request, pk, *args, **kwargs)
+    home_link = '/statuses'
+    delete_deny_massage = _('Unable to delete status because it is in use')
+    non_use_require_field = 'status'
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
