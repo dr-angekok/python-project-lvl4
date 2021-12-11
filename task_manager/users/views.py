@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from django.utils.translation import ugettext as _
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView
-from task_manager.tasks.models import Task
+from task_manager.mixins import PermissionRequiredMixin, UserNotInvolvedMixin
 
 from .forms import UserForm
 
@@ -27,10 +27,12 @@ class Create(CreateView):
                       context={'form': UserForm(data=request.POST)})
 
 
-class Update(LoginRequiredMixin, UpdateView):
+class Update(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     form_class = UserForm
+    home_link = '/users'
+    modify_deny_message = _('You do not have permission to modify another user.')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -39,19 +41,13 @@ class Update(LoginRequiredMixin, UpdateView):
         messages.info(self.request, _('User edited successfully'))
         return redirect('/users')
 
-    def dispatch(self, request, pk, *args, **kwargs):
-        if request.user.id is not pk:
-            if request.user.is_authenticated:
-                messages.info(request, _('You do not have permission to modify another user.'))
-                return redirect('/users')
-            messages.info(request, _('You are not authorized! Please sign in.'))
-            return redirect('/login')
-        return super().dispatch(request, *args, **kwargs)
 
-
-class Delete(LoginRequiredMixin, View):
+class Delete(LoginRequiredMixin, PermissionRequiredMixin, UserNotInvolvedMixin, View):
     login_url = 'login'
     template_name = 'users/delete.html'
+    home_link = '/users'
+    modify_deny_message = _('You do not have permission to delete another user.')
+    delete_deny_massage = _('It is impossible to delete a user who has tasks.')
 
     def get(self, request, user_id):
         context = {'user': User.objects.get(id=user_id)}
@@ -62,18 +58,6 @@ class Delete(LoginRequiredMixin, View):
         user.delete()
         messages.info(request, _('Successfully delete.'))
         return redirect('/users')
-
-    def dispatch(self, request, user_id, *args, **kwargs):
-        if request.user.id is not user_id:
-            if request.user.is_authenticated:
-                messages.info(request, _('You do not have permission to modify another user.'))
-                return redirect('/users')
-            messages.info(request, _('You are not authorized! Please sign in.'))
-            return redirect('/login')
-        if Task.objects.filter(creator__id=user_id) or Task.objects.filter(executor__id=user_id):
-            messages.info(request, _('It is impossible to delete a user who has tasks.'))
-            return redirect('/users')
-        return super().dispatch(request, user_id, *args, **kwargs)
 
 
 class List(View):

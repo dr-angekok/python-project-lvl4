@@ -1,0 +1,23 @@
+from django.contrib import messages
+from django.utils.translation import ugettext as _
+from django.shortcuts import redirect
+from task_manager.tasks.models import Task
+
+
+class PermissionRequiredMixin():
+    def dispatch(self, request, pk, *args, **kwargs):
+        if request.user.id is not pk:
+            if request.user.is_authenticated:
+                messages.info(request, self.modify_deny_message)
+                return redirect(self.home_link)
+            messages.info(request, _('You are not authorized! Please sign in.'))
+            return redirect('/login')
+        return super().dispatch(request, pk, *args, **kwargs)
+
+
+class UserNotInvolvedMixin():
+    def dispatch(self, request, pk, *args, **kwargs):
+        if Task.objects.filter(creator__id=pk) or Task.objects.filter(executor__id=pk):
+            messages.info(request, self.delete_deny_massage)
+            return redirect('/users')
+        return super().dispatch(request, pk, *args, **kwargs)
