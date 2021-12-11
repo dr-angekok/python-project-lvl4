@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-11 19:09+0300\n"
+"POT-Creation-Date: 2021-12-11 21:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr "Метка успешно удалена"
 msgid "Unable to delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: task_manager/mixins.py:12
+#: task_manager/mixins.py:13
 msgid "You are not authorized! Please sign in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
@@ -222,8 +222,7 @@ msgid "Adding Label"
 msgstr "Добавить метку"
 
 #: task_manager/templates/labels/tasklabel_form.html:12
-#: task_manager/templates/tasks/task_create_form.html:12
-msgid "Submit"
+msgid "Summon"
 msgstr "Создать"
 
 #: task_manager/templates/statuses/status.html:6
@@ -298,6 +297,10 @@ msgstr "Вы уверены, что хотите удалить эту зада�
 #: task_manager/templates/tasks/task_update_form.html:5
 msgid "Adding Task"
 msgstr "Редактирование задачи"
+
+#: task_manager/templates/tasks/task_create_form.html:12
+msgid "Submit"
+msgstr "Создать"
 
 #: task_manager/templates/tasks/tasks_list.html:6
 msgid "Tasks list:"
@@ -391,27 +394,27 @@ msgstr "обновить страницу пользователя"
 msgid "Update user"
 msgstr "Изменить"
 
-#: task_manager/users/views.py:24
+#: task_manager/users/views.py:23
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:36
+#: task_manager/users/views.py:35
 msgid "You do not have permission to modify another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: task_manager/users/views.py:42
+#: task_manager/users/views.py:41
 msgid "User edited successfully"
 msgstr "Пользователь успешно изменён"
 
-#: task_manager/users/views.py:50
+#: task_manager/users/views.py:49
 msgid "You do not have permission to delete another user."
 msgstr "У вас нет прав для удаления другого пользователя."
 
-#: task_manager/users/views.py:51
+#: task_manager/users/views.py:50
 msgid "It is impossible to delete a user who has tasks."
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: task_manager/users/views.py:60
+#: task_manager/users/views.py:59
 msgid "Successfully delete."
 msgstr "Пользователь успешно удалён"
 
