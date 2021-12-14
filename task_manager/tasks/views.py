@@ -50,15 +50,15 @@ class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return super(TaskUpdate, self).form_valid(form)
 
 
-class TaskDelete(LoginRequiredMixin, OnDeleteMessageMixin, DeleteView):
+class TaskDelete(LoginRequiredMixin, OnDeleteMessageMixin, SuccessMessageMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully deleted")
     delete_deny_massage = _('You do not have permission to delet another user task.')
 
-    def dispatch(self, request, pk, *args, **kwargs):
+    def get(self, request, pk):
         task = Task.objects.filter(pk=pk)
         if not task.filter(creator__id=request.user.id):
             messages.info(request, self.delete_deny_massage)
             return HttpResponseRedirect(self.success_url)
-        return super().get(request, pk, *args, **kwargs)
+        return super().get(request, pk)
