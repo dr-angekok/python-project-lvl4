@@ -1,11 +1,11 @@
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from task_manager.mixins import NonUseItemRequireMixin, GetContextDataMixin
+from task_manager.mixins import (GetContextDataMixin, NonUseItemRequireMixin,
+                                 OnDeleteMessageMixin)
 
 from .forms import LabelForm
 from .models import TaskLabel
@@ -43,14 +43,10 @@ class LabelUpdate(GetContextDataMixin, LoginRequiredMixin, SuccessMessageMixin, 
     context_objects_model = TaskLabel
 
 
-class LabelDelete(LoginRequiredMixin, SuccessMessageMixin, NonUseItemRequireMixin, DeleteView):
+class LabelDelete(LoginRequiredMixin, OnDeleteMessageMixin, NonUseItemRequireMixin, DeleteView):
     model = TaskLabel
     success_url = reverse_lazy('labels')
     success_message = _("Label successfully deleted")
     home_link = '/labels'
     delete_deny_massage = _('Unable to delete label because it is in use')
     non_use_require_field = 'labels'
-
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
-        return super(LabelDelete, self).delete(request, *args, **kwargs)

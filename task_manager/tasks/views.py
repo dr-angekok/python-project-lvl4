@@ -6,34 +6,18 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from task_manager.mixins import (OnDeleteMessageMixin, FilterViewsSetMixin)
 
 from .filters import TaskFilter
 from .forms import TaskForm
 from .models import Task
 
 
-class TasksView(generic.ListView):
+class TasksView(FilterViewsSetMixin, generic.ListView):
     model = Task
     template_name = 'tasks/tasks_list.html'
     context_object_name = 'tasks_list'
     filterset_class = TaskFilter
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = TaskFilter(
-            self.request.GET,
-            queryset=self.get_queryset(),)
-        return context
-
-    def get_queryset(self):
-        if self.request.GET:
-            parameters = self.request.GET
-            filters = {}
-            for key, value in parameters.items():
-                if value:
-                    filters[key] = value
-            return Task.objects.filter(**filters)
-        return Task.objects.all()
 
 
 class TaskView(generic.DetailView):
@@ -66,18 +50,15 @@ class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return super(TaskUpdate, self).form_valid(form)
 
 
-class TaskDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+class TaskDelete(LoginRequiredMixin, OnDeleteMessageMixin, DeleteView):
     model = Task
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully deleted")
+    delete_deny_massage = _('You do not have permission to delet another user task.')
 
-    def get(self, request, pk):
+    def dispatch(self, request, pk, *args, **kwargs):
         task = Task.objects.filter(pk=pk)
         if not task.filter(creator__id=request.user.id):
-            messages.info(request, _('You do not have permission to delet another user task.'))
+            messages.info(request, self.delete_deny_massage)
             return HttpResponseRedirect(self.success_url)
-        return super().get(request, pk)
-
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, self.success_message)
-        return super(TaskDelete, self).delete(request, *args, **kwargs)
+        return super().get(request, pk, *args, **kwargs)

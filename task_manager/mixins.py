@@ -37,3 +37,28 @@ class GetContextDataMixin():
         context = super().get_context_data(**kwargs)
         context[self.context_fild_name] = self.context_objects_model.objects.all()
         return context
+
+
+class OnDeleteMessageMixin():
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super().delete(request, *args, **kwargs)
+
+
+class FilterViewsSetMixin():
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filterset_class(
+            self.request.GET,
+            queryset=self.get_queryset(),)
+        return context
+
+    def get_queryset(self):
+        if self.request.GET:
+            parameters = self.request.GET
+            filters = {}
+            for key, value in parameters.items():
+                if value:
+                    filters[key] = value
+            return self.model.objects.filter(**filters)
+        return self.model.objects.all()
