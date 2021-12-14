@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from task_manager.mixins import NonUseItemRequireMixin
+from task_manager.mixins import GetContextDataMixin, NonUseItemRequireMixin
 
 from .forms import StatusForm
 from .models import TaskStatus
@@ -24,29 +24,23 @@ class StatusView(generic.DetailView):
     template_name = "statuses/status.html"
 
 
-class StatusCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class StatusCreate(GetContextDataMixin, LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
     form_class = StatusForm
     success_message = _("Status successfully created")
-
-    def get_context_data(self, **kwargs):
-        context = super(StatusCreate, self).get_context_data(**kwargs)
-        context['statuses'] = TaskStatus.objects.all()
-        return context
+    context_fild_name = 'statuses'
+    context_objects_model = TaskStatus
 
 
-class StatusUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class StatusUpdate(GetContextDataMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = TaskStatus
     success_url = reverse_lazy('statuses')
     template_name = 'statuses/status_update.html'
     form_class = StatusForm
     success_message = _("Status successfully updated")
-
-    def get_context_data(self, **kwargs):
-        context = super(StatusUpdate, self).get_context_data(**kwargs)
-        context['statuses'] = TaskStatus.objects.all()
-        return context
+    context_fild_name = 'statuses'
+    context_objects_model = TaskStatus
 
 
 class StatusDelete(LoginRequiredMixin, SuccessMessageMixin, NonUseItemRequireMixin, DeleteView):

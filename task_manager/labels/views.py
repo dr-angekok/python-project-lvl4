@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from task_manager.mixins import NonUseItemRequireMixin
+from task_manager.mixins import NonUseItemRequireMixin, GetContextDataMixin
 
 from .forms import LabelForm
 from .models import TaskLabel
@@ -24,29 +24,23 @@ class LabelView(generic.DetailView):
     template_name = "labels/label.html"
 
 
-class LabelCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class LabelCreate(GetContextDataMixin, LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = TaskLabel
     form_class = LabelForm
     success_url = reverse_lazy('labels')
     success_message = _("Label successfully Created")
-
-    def get_context_data(self, **kwargs):
-        context = super(LabelCreate, self).get_context_data(**kwargs)
-        context['labels'] = TaskLabel.objects.all()
-        return context
+    context_fild_name = 'labels'
+    context_objects_model = TaskLabel
 
 
-class LabelUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class LabelUpdate(GetContextDataMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = TaskLabel
     form_class = LabelForm
     success_url = reverse_lazy('labels')
     template_name = 'labels/label_update.html'
     success_message = _("Label successfully updated")
-
-    def get_context_data(self, **kwargs):
-        context = super(LabelUpdate, self).get_context_data(**kwargs)
-        context['labels'] = TaskLabel.objects.all()
-        return context
+    context_fild_name = 'labels'
+    context_objects_model = TaskLabel
 
 
 class LabelDelete(LoginRequiredMixin, SuccessMessageMixin, NonUseItemRequireMixin, DeleteView):

@@ -30,3 +30,10 @@ class NonUseItemRequireMixin():
             messages.info(request, self.delete_deny_massage)
             return redirect(self.home_link)
         return super().dispatch(request, pk, *args, **kwargs)
+
+
+class GetContextDataMixin():
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context[self.context_fild_name] = self.context_objects_model.objects.all()
+        return context
