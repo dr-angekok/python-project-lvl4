@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.utils.translation import ugettext as _
 from django.shortcuts import redirect
+from django.utils.translation import ugettext as _
+
 from task_manager.tasks.models import Task
 
 
@@ -62,3 +63,9 @@ class FilterViewsSetMixin():
                     filters[key] = value
             return self.model.objects.filter(**filters)
         return self.model.objects.all()
+
+
+class AddCreatorAsCurrentUserMixin():
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)

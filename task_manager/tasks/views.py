@@ -6,7 +6,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext as _
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from task_manager.mixins import (OnDeleteMessageMixin, FilterViewsSetMixin)
+from task_manager.mixins import (AddCreatorAsCurrentUserMixin,
+                                 FilterViewsSetMixin, OnDeleteMessageMixin)
 
 from .filters import TaskFilter
 from .forms import TaskForm
@@ -26,28 +27,20 @@ class TaskView(generic.DetailView):
     success_url = reverse_lazy('tasks')
 
 
-class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TaskCreate(LoginRequiredMixin, SuccessMessageMixin, AddCreatorAsCurrentUserMixin, CreateView):
     model = Task
     template_name = "tasks/task_create_form.html"
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully Created")
     form_class = TaskForm
 
-    def form_valid(self, form):
-        form.instance.creator = self.request.user
-        return super(TaskCreate, self).form_valid(form)
 
-
-class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdate(LoginRequiredMixin, SuccessMessageMixin, AddCreatorAsCurrentUserMixin, UpdateView):
     model = Task
     template_name = "tasks/task_update_form.html"
     success_url = reverse_lazy('tasks')
     success_message = _("Task successfully updated")
     form_class = TaskForm
-
-    def form_valid(self, form):
-        form.instance.creator = self.request.user
-        return super(TaskUpdate, self).form_valid(form)
 
 
 class TaskDelete(LoginRequiredMixin, OnDeleteMessageMixin, SuccessMessageMixin, DeleteView):
