@@ -33,13 +33,14 @@ class Update(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     form_class = UserForm
     home_link = '/users'
     modify_deny_message = _('You do not have permission to modify another user.')
+    success_message = _('User edited successfully')
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-        messages.info(self.request, _('User edited successfully'))
-        return redirect('/users')
+        messages.info(self.request, self.success_message)
+        return redirect(self.home_link)
 
 
 class Delete(LoginRequiredMixin, PermissionRequiredMixin, UserNotInvolvedMixin, View):
@@ -48,6 +49,7 @@ class Delete(LoginRequiredMixin, PermissionRequiredMixin, UserNotInvolvedMixin, 
     home_link = '/users'
     modify_deny_message = _('You do not have permission to delete another user.')
     delete_deny_massage = _('It is impossible to delete a user who has tasks.')
+    success_message = _('Successfully delete.')
 
     def get(self, request, user_id):
         context = {'user': User.objects.get(id=user_id)}
@@ -56,8 +58,8 @@ class Delete(LoginRequiredMixin, PermissionRequiredMixin, UserNotInvolvedMixin, 
     def post(self, request, user_id):
         user = User.objects.get(id=user_id)
         user.delete()
-        messages.info(request, _('Successfully delete.'))
-        return redirect('/users')
+        messages.info(request, self.success_message)
+        return redirect(self.home_link)
 
 
 class List(View):
