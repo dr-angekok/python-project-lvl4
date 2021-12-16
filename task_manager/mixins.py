@@ -6,6 +6,12 @@ from task_manager.tasks.models import Task
 
 
 class PermissionRequiredMixin():
+    """Adds the ability to check if the user is the one being edited.
+    Required:
+            modify_deny_message: The message of the impossibility of editing.
+            home_link: Link to the site to redirect if the user does not match the current one
+    """
+
     def dispatch(self, request, pk, *args, **kwargs):
         if request.user.id is not pk:
             if request.user.is_authenticated:
@@ -17,6 +23,12 @@ class PermissionRequiredMixin():
 
 
 class UserNotInvolvedMixin():
+    """Checks if the user has active tasks for himself or for others and,
+    if there are any, aborts the operation.
+    Required:
+            delete_deny_massage: The message of the impossibility of delete.
+    """
+
     def dispatch(self, request, pk, *args, **kwargs):
         if Task.objects.filter(creator__id=pk) or Task.objects.filter(executor__id=pk):
             messages.info(request, self.delete_deny_massage)
@@ -25,6 +37,12 @@ class UserNotInvolvedMixin():
 
 
 class NonUseItemRequireMixin():
+    """Checks if a value is used in tasks and aborts if used.
+    Required:
+            delete_deny_massage: The message of the impossibility of delete.
+            non_use_require_field: The field in the model whose value should not be used
+            home_link: Failure redirect link.
+    """
     def dispatch(self, request, pk, *args, **kwargs):
         filter_args = {'{}__id'.format(self.non_use_require_field): pk}
         if Task.objects.filter(**filter_args):
@@ -34,6 +52,10 @@ class NonUseItemRequireMixin():
 
 
 class GetContextDataMixin():
+    """Provides context for filling out a form field.
+    Required:
+            context_fild_name: Model field name for context.
+    """
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context[self.context_fild_name] = self.context_objects_model.objects.all()
@@ -41,12 +63,16 @@ class GetContextDataMixin():
 
 
 class OnDeleteMessageMixin():
+    """Same as SuccessMessageMixin but when delete via standard form."""
+
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super().delete(request, *args, **kwargs)
 
 
 class FilterViewsSetMixin():
+    """Creates a context for the form, applying the filter that exists on the form."""
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['filter'] = self.filterset_class(
@@ -66,6 +92,8 @@ class FilterViewsSetMixin():
 
 
 class AddCreatorAsCurrentUserMixin():
+    """Fill the 'creator' field with the current user"""
+
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
